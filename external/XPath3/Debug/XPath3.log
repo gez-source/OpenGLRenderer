@@ -1,0 +1,8 @@
+﻿  XPathSequence.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XPathSequence.cpp(195): warning C4101: 'attribute': unreferenced local variable
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XPathSequence.cpp(193): warning C4101: 'item': unreferenced local variable
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XPathSequence.cpp(192): warning C4101: 'j': unreferenced local variable
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XPathSequence.cpp(191): warning C4101: 'i': unreferenced local variable
+  XPath3.vcxproj -> C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\Debug\XPath3.lib

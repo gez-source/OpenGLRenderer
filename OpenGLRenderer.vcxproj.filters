@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{572d745e-eaa4-44fb-a12b-b7f52ef9d328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{b15151f4-6e5f-49b5-aa3b-a04ecf4fe7ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation">
+      <UniqueIdentifier>{2b976c90-e775-4f0f-9897-93ea681deeda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation">
+      <UniqueIdentifier>{e1908a59-8a2d-49c3-a6b0-004ac2ae13ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\AnimatedModel">
+      <UniqueIdentifier>{1448299f-936b-4d3b-be00-9512bfb131b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\AnimatedModel">
+      <UniqueIdentifier>{68dd91c2-2f1a-4c72-b547-aa74cc5f036c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\Animation">
+      <UniqueIdentifier>{1cafa136-4052-4f57-aded-b2ac2f3c0681}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\Animation">
+      <UniqueIdentifier>{ebd2a699-eb93-4ce9-a316-b11a34ba338d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\Loaders">
+      <UniqueIdentifier>{8a72db82-e7d7-4324-820f-3336b9dc0843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\Loaders">
+      <UniqueIdentifier>{d47e4379-4a36-4578-8270-abb0628961a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\Renderer">
+      <UniqueIdentifier>{050bf3ed-daf7-4d87-82ec-1587f78ad2e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\Renderer">
+      <UniqueIdentifier>{8ea5dae0-0181-4590-9e97-be276e435ec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\ColladaParser">
+      <UniqueIdentifier>{fb919edb-3270-4d15-a282-e6fbe853742b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\ColladaParser">
+      <UniqueIdentifier>{56852319-ae92-4a1f-88f1-91bba79baf17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\ColladaParser\DataStructures">
+      <UniqueIdentifier>{f4f16a50-56d5-46dc-8735-81ff74ecfe06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\ColladaParser\ColladaLoader">
+      <UniqueIdentifier>{ab935afc-c1df-4b1d-adaf-6c826c107441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\ColladaParser\ColladaLoader">
+      <UniqueIdentifier>{00584e0e-9852-4e6f-af00-a2579de888b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\ColladaParser\DataStructures">
+      <UniqueIdentifier>{a1f7ad85-8a3e-40ff-ae79-a02ed11c1e23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\XML">
+      <UniqueIdentifier>{f6266999-ae72-4bf3-9050-401ea5f381db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\XML">
+      <UniqueIdentifier>{2110e349-21f5-49c6-befc-6f4f7aef64b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OpenGL">
+      <UniqueIdentifier>{31271edf-c73e-4330-af2b-4f9d80872677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OpenGL">
+      <UniqueIdentifier>{89520834-b497-4dca-96ff-0447f3c1a846}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Terrain">
+      <UniqueIdentifier>{32b4399f-e2af-4a71-871c-b6f12b3c1b80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Terrain">
+      <UniqueIdentifier>{d24115b8-cb65-4325-bc18-ac39eea03b34}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\IOHelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EntryPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AABB.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BinaryReader.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BinaryWriter.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Colour.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ColourRGBA.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoorinateSet.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HalfEdgeMesh.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HE_AdjacencyList.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HE_Edge.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HE_Face.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HE_Pair.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HE_Vertex.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IndexedTriangleSet.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MathHelpers.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Matrix3.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Matrix4.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nullable.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Octree.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PrimitiveProcessor.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Quad.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Quadtree.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Quaternion.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Ray.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SystemTests.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triangle.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector2.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector2i.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector3.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector4.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WavefrontOBJMeshImporter.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WOBJ_Face.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WOBJ_Mesh.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ShaderHelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimatedModel.cpp">
+      <Filter>Source Files\Animation\AnimatedModel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Joint.cpp">
+      <Filter>Source Files\Animation\AnimatedModel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation.cpp">
+      <Filter>Source Files\Animation\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animator.cpp">
+      <Filter>Source Files\Animation\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JointTransform.cpp">
+      <Filter>Source Files\Animation\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KeyFrame.cpp">
+      <Filter>Source Files\Animation\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimatedModelLoader.cpp">
+      <Filter>Source Files\Animation\Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimatedModelRenderer.cpp">
+      <Filter>Source Files\Animation\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimatedModelShader.cpp">
+      <Filter>Source Files\Animation\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimatedModelData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimationData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JointData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JointTransformData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KeyFrameData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MeshData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SkeletonData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SkinningData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vertex.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VertexSkinData.cpp">
+      <Filter>Source Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMLAnimationLoader.cpp">
+      <Filter>Source Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMLColladaLoader.cpp">
+      <Filter>Source Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMLGeometryLoader.cpp">
+      <Filter>Source Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMLSkeletonLoader.cpp">
+      <Filter>Source Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMLSkinLoader.cpp">
+      <Filter>Source Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vao.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vbo.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextureData.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextureUtils.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextureBuilder.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLExt.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TGADecoder.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Transform.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StringHelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pugixml.cpp">
+      <Filter>Source Files\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMLHelpers.cpp">
+      <Filter>Source Files\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGlUtils.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ShaderProgram.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cubemap.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skybox.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NoiseHelpers.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Terrain.cpp">
+      <Filter>Source Files\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileWatcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OctreeRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\IOHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Colour.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ColourRGBA.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\CoorinateSet.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Edge.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Enums.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\FaceAttributes.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\FileHelpers.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\HalfEdgeMesh.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\HE_AdjacencyList.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\HE_Edge.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\HE_Face.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\HE_Pair.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\HE_Vertex.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\IndexedQuadSet.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\IndexedSet.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\IndexedTriangleSet.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\MathHelpers.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Matrix3.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Matrix4.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\MeshBuffer.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\model.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Nullable.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Octree.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ParserState.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\PrimitiveProcessor.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Quad.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Quadtree.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Quaternion.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Ray.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\SystemTests.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Triangle.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector2.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector2i.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector3.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector4.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\VertexAttributes.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\WavefrontEnums.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\WavefrontOBJMeshImporter.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\WOBJ_Face.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\WOBJ_Group.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\WOBJ_Mesh.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\AABB.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\BinaryReader.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\BinaryWriter.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Byte.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\MathExt.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ShaderHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\AnimatedModel.h">
+      <Filter>Header Files\Animation\AnimatedModel</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Joint.h">
+      <Filter>Header Files\Animation\AnimatedModel</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Animation.h">
+      <Filter>Header Files\Animation\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Animator.h">
+      <Filter>Header Files\Animation\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\JointTransform.h">
+      <Filter>Header Files\Animation\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\KeyFrame.h">
+      <Filter>Header Files\Animation\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\AnimatedModelLoader.h">
+      <Filter>Header Files\Animation\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\AnimatedModelRenderer.h">
+      <Filter>Header Files\Animation\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\AnimatedModelShader.h">
+      <Filter>Header Files\Animation\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\XMLAnimationLoader.h">
+      <Filter>Header Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\XMLColladaLoader.h">
+      <Filter>Header Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\XMLGeometryLoader.h">
+      <Filter>Header Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\XMLSkeletonLoader.h">
+      <Filter>Header Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\XMLSkinLoader.h">
+      <Filter>Header Files\Animation\ColladaParser\ColladaLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\AnimatedModelData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\AnimationData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\JointData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\JointTransformData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\KeyFrameData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\MeshData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\SkeletonData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\SkinningData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vertex.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\VertexSkinData.h">
+      <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vao.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vbo.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Texture.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TextureBuilder.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TextureData.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TextureUtils.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OpenGLExt.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TGADecoder.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Transform.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\StringHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\pugiconfig.hpp">
+      <Filter>Header Files\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\pugixml.hpp">
+      <Filter>Header Files\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\XMLHelpers.h">
+      <Filter>Header Files\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OpenGlUtils.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ShaderProgram.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\UniformMatrix.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Uniform.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\UniformSampler.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\UniformVec3.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\UniformMat4Array.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TimeManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Cubemap.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Skybox.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\UniformInt.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Terrain.h">
+      <Filter>Header Files\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\NoiseHelpers.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\UniformVec3Array.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Light.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\FileWatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\MessageQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\CharacterController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OctreeRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

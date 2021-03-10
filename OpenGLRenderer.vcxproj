@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C6156165-7162-443F-953E-B0900736F581}</ProjectGuid>
+    <RootNamespace>OpenGLRenderer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\XPath3\includes;$(SolutionDir)includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\XPath3\Debug;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\lib-vc2015;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>XPath3.lib;glew32s.lib;glfw3.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;sfml-graphics-s-d.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s-d.lib;ws2_32.lib;sfml-network-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\lib-vc2015;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;sfml-graphics-s-d.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s-d.lib;ws2_32.lib;sfml-network-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\XPath3\includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\XPath3\Release;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\lib-vc2015;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>XPath3.lib;sfml-window-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;sfml-graphics-s.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s.lib;ws2_32.lib;sfml-network-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\lib-vc2015;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-window-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;sfml-graphics-s.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s.lib;ws2_32.lib;sfml-network-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\AABB.cpp" />
+    <ClCompile Include="src\AnimatedModel.cpp" />
+    <ClCompile Include="src\AnimatedModelData.cpp" />
+    <ClCompile Include="src\AnimatedModelLoader.cpp" />
+    <ClCompile Include="src\AnimatedModelRenderer.cpp" />
+    <ClCompile Include="src\AnimatedModelShader.cpp" />
+    <ClCompile Include="src\Animation.cpp" />
+    <ClCompile Include="src\AnimationData.cpp" />
+    <ClCompile Include="src\Animator.cpp" />
+    <ClCompile Include="src\BinaryReader.cpp" />
+    <ClCompile Include="src\BinaryWriter.cpp" />
+    <ClCompile Include="src\Character.cpp" />
+    <ClCompile Include="src\CharacterController.cpp" />
+    <ClCompile Include="src\Colour.cpp" />
+    <ClCompile Include="src\ColourRGBA.cpp" />
+    <ClCompile Include="src\CoorinateSet.cpp" />
+    <ClCompile Include="src\Cubemap.cpp" />
+    <ClCompile Include="src\EntryPoint.cpp" />
+    <ClCompile Include="src\FileWatcher.cpp" />
+    <ClCompile Include="src\HalfEdgeMesh.cpp" />
+    <ClCompile Include="src\HE_AdjacencyList.cpp" />
+    <ClCompile Include="src\HE_Edge.cpp" />
+    <ClCompile Include="src\HE_Face.cpp" />
+    <ClCompile Include="src\HE_Pair.cpp" />
+    <ClCompile Include="src\HE_Vertex.cpp" />
+    <ClCompile Include="src\IndexedTriangleSet.cpp" />
+    <ClCompile Include="src\IOHelpers.cpp" />
+    <ClCompile Include="src\Joint.cpp" />
+    <ClCompile Include="src\JointData.cpp" />
+    <ClCompile Include="src\JointTransform.cpp" />
+    <ClCompile Include="src\JointTransformData.cpp" />
+    <ClCompile Include="src\KeyFrame.cpp" />
+    <ClCompile Include="src\KeyFrameData.cpp" />
+    <ClCompile Include="src\MathHelpers.cpp" />
+    <ClCompile Include="src\Matrix3.cpp" />
+    <ClCompile Include="src\Matrix4.cpp" />
+    <ClCompile Include="src\MeshData.cpp" />
+    <ClCompile Include="src\model.cpp" />
+    <ClCompile Include="src\NoiseHelpers.cpp" />
+    <ClCompile Include="src\Nullable.cpp" />
+    <ClCompile Include="src\Octree.cpp" />
+    <ClCompile Include="src\OctreeRenderer.cpp" />
+    <ClCompile Include="src\OpenGLExt.cpp" />
+    <ClCompile Include="src\OpenGlUtils.cpp" />
+    <ClCompile Include="src\PrimitiveProcessor.cpp" />
+    <ClCompile Include="src\pugixml.cpp" />
+    <ClCompile Include="src\Quad.cpp" />
+    <ClCompile Include="src\Quadtree.cpp" />
+    <ClCompile Include="src\Quaternion.cpp" />
+    <ClCompile Include="src\Ray.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\ShaderHelpers.cpp" />
+    <ClCompile Include="src\ShaderProgram.cpp" />
+    <ClCompile Include="src\SkeletonData.cpp" />
+    <ClCompile Include="src\SkinningData.cpp" />
+    <ClCompile Include="src\Skybox.cpp" />
+    <ClCompile Include="src\StringHelpers.cpp" />
+    <ClCompile Include="src\SystemTests.cpp" />
+    <ClCompile Include="src\Terrain.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\TextureBuilder.cpp" />
+    <ClCompile Include="src\TextureData.cpp" />
+    <ClCompile Include="src\TextureUtils.cpp" />
+    <ClCompile Include="src\TGADecoder.cpp" />
+    <ClCompile Include="src\Transform.cpp" />
+    <ClCompile Include="src\Triangle.cpp" />
+    <ClCompile Include="src\Vao.cpp" />
+    <ClCompile Include="src\Vbo.cpp" />
+    <ClCompile Include="src\Vector2.cpp" />
+    <ClCompile Include="src\Vector2i.cpp" />
+    <ClCompile Include="src\Vector3.cpp" />
+    <ClCompile Include="src\Vector4.cpp" />
+    <ClCompile Include="src\Vertex.cpp" />
+    <ClCompile Include="src\VertexSkinData.cpp" />
+    <ClCompile Include="src\WavefrontOBJMeshImporter.cpp" />
+    <ClCompile Include="src\WOBJ_Face.cpp" />
+    <ClCompile Include="src\WOBJ_Mesh.cpp" />
+    <ClCompile Include="src\XMLAnimationLoader.cpp" />
+    <ClCompile Include="src\XMLColladaLoader.cpp" />
+    <ClCompile Include="src\XMLGeometryLoader.cpp" />
+    <ClCompile Include="src\XMLHelpers.cpp" />
+    <ClCompile Include="src\XMLSkeletonLoader.cpp" />
+    <ClCompile Include="src\XMLSkinLoader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\AABB.h" />
+    <ClInclude Include="includes\AnimatedModel.h" />
+    <ClInclude Include="includes\AnimatedModelData.h" />
+    <ClInclude Include="includes\AnimatedModelLoader.h" />
+    <ClInclude Include="includes\AnimatedModelRenderer.h" />
+    <ClInclude Include="includes\AnimatedModelShader.h" />
+    <ClInclude Include="includes\Animation.h" />
+    <ClInclude Include="includes\AnimationData.h" />
+    <ClInclude Include="includes\Animator.h" />
+    <ClInclude Include="includes\BinaryReader.h" />
+    <ClInclude Include="includes\BinaryWriter.h" />
+    <ClInclude Include="includes\Byte.h" />
+    <ClInclude Include="includes\CharacterController.h" />
+    <ClInclude Include="includes\Colour.h" />
+    <ClInclude Include="includes\ColourRGBA.h" />
+    <ClInclude Include="includes\CoorinateSet.h" />
+    <ClInclude Include="includes\Cubemap.h" />
+    <ClInclude Include="includes\FileWatcher.h" />
+    <ClInclude Include="includes\Light.h" />
+    <ClInclude Include="includes\MessageQueue.h" />
+    <ClInclude Include="includes\NoiseHelpers.h" />
+    <ClInclude Include="includes\OctreeRenderer.h" />
+    <ClInclude Include="includes\Skybox.h" />
+    <ClInclude Include="includes\Terrain.h" />
+    <ClInclude Include="includes\TimeManager.h" />
+    <ClInclude Include="includes\Edge.h" />
+    <ClInclude Include="includes\Enums.h" />
+    <ClInclude Include="includes\FaceAttributes.h" />
+    <ClInclude Include="includes\FileHelpers.h" />
+    <ClInclude Include="includes\HalfEdgeMesh.h" />
+    <ClInclude Include="includes\HE_AdjacencyList.h" />
+    <ClInclude Include="includes\HE_Edge.h" />
+    <ClInclude Include="includes\HE_Face.h" />
+    <ClInclude Include="includes\HE_Pair.h" />
+    <ClInclude Include="includes\HE_Vertex.h" />
+    <ClInclude Include="includes\IndexedQuadSet.h" />
+    <ClInclude Include="includes\IndexedSet.h" />
+    <ClInclude Include="includes\IndexedTriangleSet.h" />
+    <ClInclude Include="includes\IOHelpers.h" />
+    <ClInclude Include="includes\Joint.h" />
+    <ClInclude Include="includes\JointData.h" />
+    <ClInclude Include="includes\JointTransform.h" />
+    <ClInclude Include="includes\JointTransformData.h" />
+    <ClInclude Include="includes\KeyFrame.h" />
+    <ClInclude Include="includes\KeyFrameData.h" />
+    <ClInclude Include="includes\MathExt.h" />
+    <ClInclude Include="includes\MathHelpers.h" />
+    <ClInclude Include="includes\Matrix3.h" />
+    <ClInclude Include="includes\Matrix4.h" />
+    <ClInclude Include="includes\MeshBuffer.h" />
+    <ClInclude Include="includes\MeshData.h" />
+    <ClInclude Include="includes\model.h" />
+    <ClInclude Include="includes\Character.h" />
+    <ClInclude Include="includes\Nullable.h" />
+    <ClInclude Include="includes\Octree.h" />
+    <ClInclude Include="includes\OpenGLExt.h" />
+    <ClInclude Include="includes\OpenGlUtils.h" />
+    <ClInclude Include="includes\ParserState.h" />
+    <ClInclude Include="includes\PrimitiveProcessor.h" />
+    <ClInclude Include="includes\pugiconfig.hpp" />
+    <ClInclude Include="includes\pugixml.hpp" />
+    <ClInclude Include="includes\Quad.h" />
+    <ClInclude Include="includes\Quadtree.h" />
+    <ClInclude Include="includes\Quaternion.h" />
+    <ClInclude Include="includes\Ray.h" />
+    <ClInclude Include="includes\Renderer.h" />
+    <ClInclude Include="includes\ShaderHelpers.h" />
+    <ClInclude Include="includes\ShaderProgram.h" />
+    <ClInclude Include="includes\SkeletonData.h" />
+    <ClInclude Include="includes\SkinningData.h" />
+    <ClInclude Include="includes\StringHelpers.h" />
+    <ClInclude Include="includes\SystemTests.h" />
+    <ClInclude Include="includes\Texture.h" />
+    <ClInclude Include="includes\TextureBuilder.h" />
+    <ClInclude Include="includes\TextureData.h" />
+    <ClInclude Include="includes\TextureUtils.h" />
+    <ClInclude Include="includes\TGADecoder.h" />
+    <ClInclude Include="includes\Transform.h" />
+    <ClInclude Include="includes\Triangle.h" />
+    <ClInclude Include="includes\Uniform.h" />
+    <ClInclude Include="includes\UniformInt.h" />
+    <ClInclude Include="includes\UniformMat4Array.h" />
+    <ClInclude Include="includes\UniformMatrix.h" />
+    <ClInclude Include="includes\UniformSampler.h" />
+    <ClInclude Include="includes\UniformVec3.h" />
+    <ClInclude Include="includes\UniformVec3Array.h" />
+    <ClInclude Include="includes\Vao.h" />
+    <ClInclude Include="includes\Vbo.h" />
+    <ClInclude Include="includes\Vector2.h" />
+    <ClInclude Include="includes\Vector2i.h" />
+    <ClInclude Include="includes\Vector3.h" />
+    <ClInclude Include="includes\Vector4.h" />
+    <ClInclude Include="includes\Vertex.h" />
+    <ClInclude Include="includes\VertexAttributes.h" />
+    <ClInclude Include="includes\VertexSkinData.h" />
+    <ClInclude Include="includes\WavefrontEnums.h" />
+    <ClInclude Include="includes\WavefrontOBJMeshImporter.h" />
+    <ClInclude Include="includes\WOBJ_Face.h" />
+    <ClInclude Include="includes\WOBJ_Group.h" />
+    <ClInclude Include="includes\WOBJ_Mesh.h" />
+    <ClInclude Include="includes\XMLAnimationLoader.h" />
+    <ClInclude Include="includes\XMLColladaLoader.h" />
+    <ClInclude Include="includes\XMLGeometryLoader.h" />
+    <ClInclude Include="includes\XMLHelpers.h" />
+    <ClInclude Include="includes\XMLSkeletonLoader.h" />
+    <ClInclude Include="includes\XMLSkinLoader.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

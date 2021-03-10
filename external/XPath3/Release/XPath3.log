@@ -1,0 +1,47 @@
+﻿  EvalEngine.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\EvalEngine.cpp(113): warning C4390: ';': empty controlled statement found; is this the intent?
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\EvalEngine.cpp(1091): warning C4018: '<': signed/unsigned mismatch
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\EvalEngine.cpp(1111): warning C4018: '<': signed/unsigned mismatch
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\EvalEngine.cpp(1152): warning C4390: ';': empty controlled statement found; is this the intent?
+  ExprEval.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\ExprEval.cpp(126): warning C4101: 'pFuncArity': unreferenced local variable
+  ExprFunctions.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+  ExprParser.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+  ExprTree.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+  ExprTreeNode.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+  XPathDynamicEnv.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+  XPathNode.cpp
+  XPathSequence.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+  XPathStaticEnv.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+  XPathVar.cpp
+  XmlParser.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XmlParser.cpp(88): warning C4101: 'tmp': unreferenced local variable
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XmlParser.cpp(85): warning C4101: 'docDomNode': unreferenced local variable
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XmlParser.cpp(83): warning C4101: 'node': unreferenced local variable
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XmlParser.cpp(84): warning C4101: 'xpNode': unreferenced local variable
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XmlParser.cpp(213): warning C4101: 'dnNode': unreferenced local variable
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\src\XmlParser.cpp(214): warning C4101: 'xpNode': unreferenced local variable
+  XmlParserMemoryPool.cpp
+C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): warning C4099: 'XPathTokenEntry': type name first seen using 'class' now seen using 'struct'
+  C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\includes\ExprTreeNode.h(25): note: see declaration of 'XPathTokenEntry'
+  XPath3.vcxproj -> C:\dev\athena_engine\athena_linux\external\OpenGLRenderer\external\XPath3\Release\XPath3.lib

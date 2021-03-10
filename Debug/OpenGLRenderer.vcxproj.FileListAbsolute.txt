@@ -1,0 +1,2 @@
+C:\projects\athena_engine\athena_linux\external\OpenGLRenderer\Debug\OpenGLRenderer.exe
+C:\projects\athena_engine\athena_linux\external\OpenGLRenderer\Debug\OpenGLRenderer.pdb
