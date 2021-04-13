@@ -336,6 +336,9 @@
     <ClCompile Include="src\OctreeRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\MeshBufferVAO.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\IOHelpers.h">
@@ -655,6 +658,9 @@
     </ClInclude>
     <ClInclude Include="includes\OctreeRenderer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\MeshBufferVAO.h">
+      <Filter>Header Files\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

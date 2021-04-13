@@ -15,23 +15,17 @@
 #include "MathHelpers.h"
 #include "ShaderHelpers.h"
 #include "TGADecoder.h"
-
+#include "MeshBufferVAO.h"
 
 class Character
 {
 private:
-	Model* model;
-	int verticiesCount = 0;
-	GLuint vao = 0;
 	ShaderProgram* program = nullptr;
 	ShaderProgram* programShadowmap = nullptr;
-	GLuint texture = 0;
-	GLuint textureNormalMap = 0;
-	GLuint textureSpecularMap = 0;
-	GLuint textureGlowMap = 0;
 	GLuint FramebufferName = 0;
 
 public:
+	MeshBufferVAO* meshBuffer = nullptr;
 	GLuint depthTexture = 0;
 	GLuint aoTexture = 0;
 	Matrix4 depthMVP;
@@ -42,16 +36,15 @@ public:
 	Texture* lutTexture03;
 	Texture* lutTexture04;
 public:
-	Character() : model(nullptr)
+	Character() : meshBuffer(nullptr)
 	{
+		this->meshBuffer = new MeshBufferVAO();
 		this->Initilise();
 	}
 	~Character()
 	{
 
 	}
-	void LoadModelBuffers(Model* model, std::vector<GLfloat>& verticies, std::vector<GLfloat>& texCoords,
-		std::vector<GLfloat>& normals, std::vector<GLfloat>& tangents, std::vector<GLfloat>& bitangents, int& verticiesCount);
 
 	void LoadModel(std::string fileNameModel);
 	void LoadShaders();

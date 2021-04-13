@@ -6,7 +6,6 @@
 #include "Vector3.h"
 #include "Vector2.h"
 #include "ColourRGBA.h"
-#include "AABB.h"
 #include <vector>
 
 class CoorinateSet
@@ -20,8 +19,6 @@ public:
 
 	std::vector<int>* NormalIndicies;
 	std::vector<int>* TexCoordIndicies;
-
-	AABB* Bounds;
 };
 
 #endif

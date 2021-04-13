@@ -23,12 +23,24 @@
 #include "Transform.h"
 #include "Matrix4.h"
 #include "Vector3.h"
-#include "WavefrontOBJMeshImporter.h"
+#include "MeshBufferVAO.h"
+#include "ShaderHelpers.h"
 
 class OctreeRenderer
 {
 private:
 	Octree* octreeInput;
+
+	ShaderProgram* program = nullptr;
+	GLuint depthTexture = 0;
+	Matrix4 depthMVP;
+
+public:
+	Texture* lutTexture00;
+	Texture* lutTexture01;
+	Texture* lutTexture02;
+	Texture* lutTexture03;
+	Texture* lutTexture04;
 public:
 	OctreeRenderer();
 	~OctreeRenderer();
@@ -36,13 +48,13 @@ public:
 	/// <summary>
 	/// Compress Wavefront OBJ file into a octree data structure for fast lookup.
 	/// </summary>
-	/// <param name="objFileName">
-	///	The filename of the Wavefront OBJ file.
+	/// <param name="meshBufferVAO">
+	///	The loaded MeshBufferVAO 3D model.
 	/// </param>
 	/// <param name="octree">
 	/// The resultant octree output.
 	/// </param>
-	void CompressOBJToOctree(std::string objFileName, Octree* octree);
+	void AddOBJToOctree(MeshBufferVAO* meshBufferVAO);
 
 	// TODO: function to append OBJ to Octree at specified world position
 

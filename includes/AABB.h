@@ -2,9 +2,6 @@
 #define AABB_H
 
 #include "Vector3.h"
-//#include "HE_Face.h"
-
-//class HE_Face;
 
 class AABB
 {
@@ -17,24 +14,60 @@ public:
 	/// <summary>
 	/// The half-size of the bounding box.
 	/// </summary>
-	float HalfSize;
+	Vector3 HalfSize;
 
-	AABB(Vector3 center, float halfSize);
+	/// <summary>
+	/// The minimum of the bounding box.
+	/// </summary>
+	Vector3 Min;
+
+	/// <summary>
+	/// The maximum of the bounding box.
+	/// </summary>
+	Vector3 Max;
+
+	AABB();
+	AABB(Vector3 center, Vector3 halfSize);
+
+	/// <summary>
+	/// Get the center of the bounding box.
+	/// </summary>
+	Vector3 GetCenter();
+
+	/// <summary>
+	/// Get the size of the bounding box.
+	/// </summary>
+	Vector3 GetSize();
+
+	/// <summary>
+	/// Get the half size (radius vector) of the bounding box.
+	/// </summary>
+	Vector3 GetHalfSize();
 
 	/// <summary>
 	/// The minimum extent of the bounding box.
 	/// </summary>
-	Vector3 Min();
+	Vector3 GetMin();
 
 	/// <summary>
 	/// The maximum extent of the bounding box.
 	/// </summary>
-	Vector3 Max();
+	Vector3 GetMax();
 
 	/// <summary>
-	/// Test if the specified polygon intersects this bounding box.
+	/// Clears the AABB.
 	/// </summary>
-	//bool Intersects(HE_Face* polygon);
+	void Empty();
+
+	/// <summary>
+	/// Add a point to the axis-aligned bounding box to compute the AABB.
+	/// </summary>
+	void Add(Vector3 point);
+
+	/// <summary>
+	/// Add a bounding box to compute a greater AABB.
+	/// </summary>
+	void Add(AABB boundingBox);
 
 	/// <summary>
 	/// Test if the specified point intersects this bounding box.

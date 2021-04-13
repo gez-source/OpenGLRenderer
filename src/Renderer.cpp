@@ -162,6 +162,12 @@ void Renderer::LoadModels()
 
 	octreeRenderer = new OctreeRenderer();
 	octreeRenderer->Initilise();
+	octreeRenderer->AddOBJToOctree(character00->meshBuffer);
+	octreeRenderer->lutTexture00 = lutTexture00;
+	octreeRenderer->lutTexture01 = lutTexture01;
+	octreeRenderer->lutTexture02 = lutTexture02;
+	octreeRenderer->lutTexture03 = lutTexture03;
+	octreeRenderer->lutTexture04 = lutTexture04;
 
 	InitNoiseMap();
 }
@@ -232,7 +238,6 @@ void Renderer::Render(Transform cameraTransform)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//floor->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
-	octreeRenderer->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
 
 	Matrix4 model = Matrix4::GetIdentity();
 	model.Translate(modelview.GetTranslation());
@@ -261,6 +266,7 @@ void Renderer::Render(Transform cameraTransform)
 	//mv2 *= model * modelview;
 	//mv2.Translate(Vector3(-0.5f, -0.4f, -2));
 	
+	octreeRenderer->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
 
 	character00->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
 	character01->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);

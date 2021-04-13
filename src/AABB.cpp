@@ -1,42 +1,95 @@
 #include "AABB.h"
 
-AABB::AABB(Vector3 center, float halfSize)
+AABB::AABB()
+{
+	Empty();
+}
+
+AABB::AABB(Vector3 center, Vector3 halfSize)
 {
 	Center = center;
 	HalfSize = halfSize;
+
+	Min = GetMin();
+	Max = GetMax();
+}
+
+/// <summary>
+/// Get the center of the bounding box.
+/// </summary>
+Vector3 AABB::GetCenter()
+{
+	return (Max + Min) / 2;
+}
+
+/// <summary>
+/// Get the size of the bounding box.
+/// </summary>
+Vector3 AABB::GetSize()
+{
+	return Max - Min;
+}
+
+/// <summary>
+/// Get the half size (radius vector) of the bounding box.
+/// </summary>
+Vector3 AABB::GetHalfSize()
+{
+	return GetSize() / 2; // == Max - Center.
 }
 
 /// <summary>
 /// The minimum extent of the bounding box.
 /// </summary>
-Vector3 AABB::Min()
+Vector3 AABB::GetMin()
 {
-	return Vector3(Center.x - HalfSize, Center.y - HalfSize, Center.z - HalfSize);
+	return Vector3(Center.x - HalfSize.x, Center.y - HalfSize.y, Center.z - HalfSize.z);
 }
 
 /// <summary>
 /// The maximum extent of the bounding box.
 /// </summary>
-Vector3 AABB::Max()
+Vector3 AABB::GetMax()
 {
-	return Vector3(Center.x + HalfSize, Center.y + HalfSize, Center.z + HalfSize);
+	return Vector3(Center.x + HalfSize.x, Center.y + HalfSize.y, Center.z + HalfSize.z);
 }
 
-///// <summary>
-///// Test if the specified polygon intersects this bounding box.
-///// </summary>
-//bool AABB::Intersects(HE_Face* polygon)
-//{
-//	//TODO:HACK: Dirty hack just calculating if the center of the polygon is within the box. Better to do a proper intersection test. For now this is fine.
-//
-//	Vector3 polyCenter = polygon->CenterOfMass();
-//
-//	Vector3 distance = Center - polyCenter;
-//
-//	return (abs(distance.x) <= HalfSize)
-//		&& (abs(distance.y) <= HalfSize)
-//		&& (abs(distance.z) <= HalfSize);
-//}
+/// <summary>
+/// Clears the AABB.
+/// </summary>
+void AABB::Empty()
+{
+	Center = Vector3::Zero;
+	HalfSize = Vector3::Zero;
+
+	Min.x = Min.y = Min.z = FLT_MAX;
+	Max.x = Max.y = Max.z = -FLT_MAX;
+}
+
+/// <summary>
+/// Add a point to the axis-aligned bounding box to compute the AABB.
+/// </summary>
+void AABB::Add(Vector3 point)
+{
+	if (point.x < Min.x) Min.x = point.x;
+	if (point.x > Max.x) Max.x = point.x;
+
+	if (point.y < Min.y) Min.y = point.y;
+	if (point.y > Max.y) Max.y = point.y;
+
+	if (point.z < Min.z) Min.z = point.z;
+	if (point.z > Max.z) Max.z = point.z;
+}
+
+/// <summary>
+/// Add a bounding box to compute a greater AABB.
+/// </summary>
+void AABB::Add(AABB boundingBox)
+{
+	this->Add(boundingBox.Min);
+	this->Add(boundingBox.Max);
+	this->Add(boundingBox.Center);
+}
 
 /// <summary>
 /// Test if the specified point intersects this bounding box.
@@ -45,9 +98,9 @@ bool AABB::Intersects(Vector3 point)
 {
 	Vector3 distance = Center - point;
 
-	return (abs(distance.x) <= HalfSize)
-		&& (abs(distance.y) <= HalfSize)
-		&& (abs(distance.z) <= HalfSize);
+	return (abs(distance.x) <= HalfSize.x)
+		&& (abs(distance.y) <= HalfSize.y)
+		&& (abs(distance.z) <= HalfSize.z);
 }
 
 /// <summary>
@@ -57,7 +110,7 @@ bool AABB::Intersects(Vector2 point)
 {
 	Vector2 distance(Center.x - point.x, Center.y - point.y);
 
-	return (abs(distance.x) <= HalfSize) && (abs(distance.y) <= HalfSize);
+	return (abs(distance.x) <= HalfSize.x) && (abs(distance.y) <= HalfSize.y);
 }
 
 /// <summary>
@@ -65,17 +118,19 @@ bool AABB::Intersects(Vector2 point)
 /// </summary>
 bool AABB::Intersects(AABB* other)
 {
-	Vector3 min(Center.x - HalfSize, Center.y - HalfSize, Center.z - HalfSize);
-	Vector3 max(Center.x + HalfSize, Center.y + HalfSize, Center.z + HalfSize);
+	//Vector3 min(Center.x - HalfSize.x, Center.y - HalfSize.y, Center.z - HalfSize.z);
+	//Vector3 max(Center.x + HalfSize.x, Center.y + HalfSize.y, Center.z + HalfSize.z);
+	Vector3 min = Min;
+	Vector3 max = Max;
 
-	if (min.x >= other->Max().x) return false;
-	if (max.x <= other->Min().x) return false;
+	if (min.x >= other->Max.x) return false;
+	if (max.x <= other->Min.x) return false;
 
-	if (min.y >= other->Max().y) return false;
-	if (max.y <= other->Min().y) return false;
+	if (min.y >= other->Max.y) return false;
+	if (max.y <= other->Min.y) return false;
 
-	if (min.z >= other->Max().z) return false;
-	if (max.z <= other->Min().z) return false;
+	if (min.z >= other->Max.z) return false;
+	if (max.z <= other->Min.z) return false;
 
 	// There is an Overlap on both axes, so there is an intersection.
 	return true;

@@ -7,11 +7,11 @@
 class AABB;
 class Octree;
 class Transform;
-class IndexedTriangleSet;
+class MeshBufferVAO;
 
 #include <stack>
 #include "AABB.h"
-#include "IndexedTriangleSet.h"
+#include "MeshBufferVAO.h"
 
 class Octree
 {
@@ -43,12 +43,10 @@ public:
 	/// <summary>
 	/// The objects in the current area.
 	/// </summary>
-	//std::vector<HE_Face*>* Polygons = new std::vector<HE_Face*>();
-
-	std::vector< IndexedTriangleSet*>* sceneObjects = new std::vector< IndexedTriangleSet*>();
+	std::vector<MeshBufferVAO*>* sceneObjects = new std::vector<MeshBufferVAO*>();
 
 	/// <summary>
-	/// Check if the current QuadTree is empty.
+	/// Check if the current Octree is empty.
 	/// </summary>
 	/// <returns>
 	/// Returns true if the tree is empty.
@@ -58,18 +56,21 @@ public:
 	bool Add(Octree* octTree);
 
 	/// <summary>
-	/// Insert a point into the tree.
+	/// Inserts a mesh bufer VAO into the tree.
 	/// </summary>
 	/// <returns>
-	/// Returns true if the point could be inserted in the tree, 
-	/// otherwise false if the object could not be added. 
+	/// Returns true if the MeshBufferVAO could be inserted in the tree, 
+	/// otherwise false if the MeshBufferVAO could not be added. 
 	/// </returns>
-	//bool Add(HE_Face* polygon);
+	bool Add(MeshBufferVAO* meshBufferVAO);
 
+	/// <summary>
+	/// Subdivide the current Octree 
+	/// </summary>
 	void Subdivide();
 
 	/// <summary>
-	/// Find the nearest objects in the specified area.
+	/// Find the nearest MeshBufferVAO objects in the specified area.
 	/// </summary>
 	/// <param name="area">
 	/// A bounding box that encapsulates the area.
@@ -77,9 +78,7 @@ public:
 	/// <returns>
 	/// A list of objects in the area. (For now just test points)
 	/// </returns>
-	//std::vector<HE_Face*>* FindNearest(AABB* area);
-
-	void FindNearestObjects(AABB area, std::vector<IndexedTriangleSet*>& nearestList);
+	void FindNearestObjects(AABB area, std::vector<MeshBufferVAO*>& nearestList);
 };
 
 #endif

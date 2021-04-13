@@ -10,7 +10,6 @@ Model::Model(std::string filename) : verts_(), faces_(), norms_(), uv_(), diffus
     in.open (filename, std::ifstream::in);
     if (in.fail()) return;
     std::string line;
-    //WavefrontOBJMeshImporter importer;
 
     while (!in.eof())
     {
@@ -21,7 +20,6 @@ Model::Model(std::string filename) : verts_(), faces_(), norms_(), uv_(), diffus
         {
             iss >> trash;
             Vector3 v;
-            //v = importer.ParseVertexCoord(line);
 
 			iss >> v.x;
 			iss >> v.y;
@@ -33,7 +31,6 @@ Model::Model(std::string filename) : verts_(), faces_(), norms_(), uv_(), diffus
         {
             iss >> trash >> trash;
             Vector3 n;
-            //n = importer.ParseVertexNormal(line);
 
 			iss >> n.x;
 			iss >> n.y;
@@ -45,7 +42,6 @@ Model::Model(std::string filename) : verts_(), faces_(), norms_(), uv_(), diffus
         {
             iss >> trash >> trash;
             Vector2 uv;
-            //uv = importer.ParseVertexTextureCoordinate(line);
 
 			iss >> uv.x;
 			iss >> uv.y;
@@ -54,8 +50,6 @@ Model::Model(std::string filename) : verts_(), faces_(), norms_(), uv_(), diffus
         }
         else if (!line.compare(0, 2, "f "))
         {
-			//WOBJ_Face* face = importer.ParseFace(line);
-
 			std::vector<Vector3> f;
 			Vector3 tmp;
 			iss >> trash;

@@ -175,6 +175,7 @@
     <ClCompile Include="src\MathHelpers.cpp" />
     <ClCompile Include="src\Matrix3.cpp" />
     <ClCompile Include="src\Matrix4.cpp" />
+    <ClCompile Include="src\MeshBufferVAO.cpp" />
     <ClCompile Include="src\MeshData.cpp" />
     <ClCompile Include="src\model.cpp" />
     <ClCompile Include="src\NoiseHelpers.cpp" />
@@ -243,6 +244,7 @@
     <ClInclude Include="includes\Cubemap.h" />
     <ClInclude Include="includes\FileWatcher.h" />
     <ClInclude Include="includes\Light.h" />
+    <ClInclude Include="includes\MeshBufferVAO.h" />
     <ClInclude Include="includes\MessageQueue.h" />
     <ClInclude Include="includes\NoiseHelpers.h" />
     <ClInclude Include="includes\OctreeRenderer.h" />
