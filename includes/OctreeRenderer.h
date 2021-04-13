@@ -88,6 +88,7 @@ public:
 
 	void Initilise();
 	void Render(sf::RenderWindow* window, Transform cameraTransform, Matrix4 projectionMatrix, Matrix4 modelview, Vector3 light_dir, Matrix4 lightModelView);
+	void RenderAABB();
 };
 
 #endif

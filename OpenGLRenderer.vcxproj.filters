@@ -339,6 +339,9 @@
     <ClCompile Include="src\MeshBufferVAO.cpp">
       <Filter>Source Files\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Debug.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\IOHelpers.h">
@@ -660,6 +663,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="includes\MeshBufferVAO.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Debug.h">
       <Filter>Header Files\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>

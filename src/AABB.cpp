@@ -1,4 +1,5 @@
 #include "AABB.h"
+#include "Debug.h"
 
 AABB::AABB()
 {
@@ -159,56 +160,63 @@ bool AABB::Intersects(AABB* other)
 //	renderer.DebugLine(Vector3(c.x + s, c.y + s, c.z + s), Vector3(c.x + s, c.y - s, c.z + s), boundsColour);
 //}
 //
-//void AABB::Debug(RenderingContext renderer, ColourRGBA& boundsColour, ColourRGBA& centerColour)
-//{
-//	// Debug the center point.
-//	renderer.DebugPoint(Center, centerColour, 1);
-//
-//	Vector3 c = Center;
-//	float s = HalfSize;
-//	// Debug the bounds of the AABB, drawing the edges of the box.
-//
-//	// FRONT PLANE
-//	// Top.
-//	renderer.DebugLine(Vector3(c.x - s, c.y + s, c.z + s), Vector3(c.x + s, c.y + s, c.z + s), boundsColour);
-//
-//	// Bottom.
-//	renderer.DebugLine(Vector3(c.x - s, c.y - s, c.z + s), Vector3(c.x + s, c.y - s, c.z + s), boundsColour);
-//
-//	// Left.
-//	renderer.DebugLine(Vector3(c.x - s, c.y + s, c.z + s), Vector3(c.x - s, c.y - s, c.z + s), boundsColour);
-//
-//	// Right.
-//	renderer.DebugLine(Vector3(c.x + s, c.y + s, c.z + s), Vector3(c.x + s, c.y - s, c.z + s), boundsColour);
-//
-//	//  DEBUG Z-axis
-//
-//	// BACK PLANE
-//	// Top.
-//	renderer.DebugLine(Vector3(c.x - s, c.y + s, c.z - s), Vector3(c.x + s, c.y + s, c.z - s), boundsColour);
-//
-//	// Bottom.
-//	renderer.DebugLine(Vector3(c.x - s, c.y - s, c.z - s), Vector3(c.x + s, c.y - s, c.z - s), boundsColour);
-//
-//	// Left.
-//	renderer.DebugLine(Vector3(c.x - s, c.y + s, c.z - s), Vector3(c.x - s, c.y - s, c.z - s), boundsColour);
-//
-//	// Right.
-//	renderer.DebugLine(Vector3(c.x + s, c.y + s, c.z - s), Vector3(c.x + s, c.y - s, c.z - s), boundsColour);
-//
-//	// LEFT PLANE
-//	// top left edge front to back.
-//	renderer.DebugLine(Vector3(c.x - s, c.y + s, c.z + s), Vector3(c.x - s, c.y + s, c.z - s), boundsColour);
-//
-//	// bottom left edge front to back.
-//	renderer.DebugLine(Vector3(c.x - s, c.y - s, c.z + s), Vector3(c.x - s, c.y - s, c.z - s), boundsColour);
-//
-//	// RIGHT PLANE
-//	//top right edge front to back.
-//	renderer.DebugLine(Vector3(c.x + s, c.y + s, c.z + s), Vector3(c.x + s, c.y + s, c.z - s), boundsColour);
-//
-//	// bottom right edge front to back.
-//	renderer.DebugLine(Vector3(c.x + s, c.y - s, c.z + s), Vector3(c.x + s, c.y - s, c.z - s), boundsColour);
-//
-//
-//}
+
+/// <summary>
+/// Draws lines for each plane of the bounding box.
+/// </summary>
+void AABB::Debug()
+{
+	ColourRGBA boundsColour = ColourRGBA(1.0f, 1.0f, 0.0f, 0.0f);
+	//ColourRGBA centerColour;
+
+	// Debug the center point.
+	//renderer.DebugPoint(Center, centerColour, 1);
+
+	Vector3 c = Center;
+	Vector3 s = HalfSize;
+	// Debug the bounds of the AABB, drawing the edges of the box.
+
+	// FRONT PLANE
+	// Top.
+	Debug::DrawLine(Vector3(c.x - s.x, c.y + s.y, c.z + s.z), Vector3(c.x + s.x, c.y + s.y, c.z + s.z), boundsColour);
+
+	// Bottom.
+	Debug::DrawLine(Vector3(c.x - s.x, c.y - s.y, c.z + s.z), Vector3(c.x + s.x, c.y - s.y, c.z + s.z), boundsColour);
+
+	// Left.
+	Debug::DrawLine(Vector3(c.x - s.x, c.y + s.y, c.z + s.z), Vector3(c.x - s.x, c.y - s.y, c.z + s.z), boundsColour);
+
+	// Right.
+	Debug::DrawLine(Vector3(c.x + s.x, c.y + s.y, c.z + s.z), Vector3(c.x + s.x, c.y - s.y, c.z + s.z), boundsColour);
+
+	//  DEBUG Z-axis
+
+	// BACK PLANE
+	// Top.
+	Debug::DrawLine(Vector3(c.x - s.x, c.y + s.y, c.z - s.z), Vector3(c.x + s.x, c.y + s.y, c.z - s.z), boundsColour);
+
+	// Bottom.
+	Debug::DrawLine(Vector3(c.x - s.x, c.y - s.y, c.z - s.z), Vector3(c.x + s.x, c.y - s.y, c.z - s.z), boundsColour);
+
+	// Left.
+	Debug::DrawLine(Vector3(c.x - s.x, c.y + s.y, c.z - s.z), Vector3(c.x - s.x, c.y - s.y, c.z - s.z), boundsColour);
+
+	// Right.
+	Debug::DrawLine(Vector3(c.x + s.x, c.y + s.y, c.z - s.z), Vector3(c.x + s.x, c.y - s.y, c.z - s.z), boundsColour);
+
+	// LEFT PLANE
+	// top left edge front to back.
+	Debug::DrawLine(Vector3(c.x - s.x, c.y + s.y, c.z + s.z), Vector3(c.x - s.x, c.y + s.y, c.z - s.z), boundsColour);
+
+	// bottom left edge front to back.
+	Debug::DrawLine(Vector3(c.x - s.x, c.y - s.y, c.z + s.z), Vector3(c.x - s.x, c.y - s.y, c.z - s.z), boundsColour);
+
+	// RIGHT PLANE
+	//top right edge front to back.
+	Debug::DrawLine(Vector3(c.x + s.x, c.y + s.y, c.z + s.z), Vector3(c.x + s.x, c.y + s.y, c.z - s.z), boundsColour);
+
+	// bottom right edge front to back.
+	Debug::DrawLine(Vector3(c.x + s.x, c.y - s.y, c.z + s.z), Vector3(c.x + s.x, c.y - s.y, c.z - s.z), boundsColour);
+
+
+}

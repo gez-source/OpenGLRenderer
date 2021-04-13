@@ -156,6 +156,7 @@
     <ClCompile Include="src\ColourRGBA.cpp" />
     <ClCompile Include="src\CoorinateSet.cpp" />
     <ClCompile Include="src\Cubemap.cpp" />
+    <ClCompile Include="src\Debug.cpp" />
     <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\FileWatcher.cpp" />
     <ClCompile Include="src\HalfEdgeMesh.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="includes\ColourRGBA.h" />
     <ClInclude Include="includes\CoorinateSet.h" />
     <ClInclude Include="includes\Cubemap.h" />
+    <ClInclude Include="includes\Debug.h" />
     <ClInclude Include="includes\FileWatcher.h" />
     <ClInclude Include="includes\Light.h" />
     <ClInclude Include="includes\MeshBufferVAO.h" />

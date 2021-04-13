@@ -39,6 +39,8 @@ void Character::Render(sf::RenderWindow* window, Transform cameraTransform, Matr
 	{
 		RenderModel(window, cameraTransform, projectionMatrix, modelview, light_dir, true);
 	}
+
+	meshBuffer->Bounds->Debug();
 }
 
 void Character::RenderModel(sf::RenderWindow* window, Transform cameraTransform, Matrix4 projectionMatrix, Matrix4 modelview, Vector3 light_dir, bool outlinePass)

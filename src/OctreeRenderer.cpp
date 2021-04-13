@@ -1,5 +1,6 @@
 #include "OctreeRenderer.h"
 #include "OpenGlUtils.h"
+#include <stack>
 
 OctreeRenderer::OctreeRenderer() : octreeInput(nullptr)
 {
@@ -31,7 +32,7 @@ bool OctreeRenderer::LoadFromBinaryFile(std::string fileName, Octree* octree)
 
 void OctreeRenderer::Initilise()
 {
-	AABB* sceneBounds = new AABB(Vector3::Zero, Vector3::One * 10000);
+	AABB* sceneBounds = new AABB(Vector3::Zero, Vector3::One * 10);
 	octreeInput = new Octree();
 	octreeInput->BBox = sceneBounds;
 }
@@ -121,6 +122,7 @@ void OctreeRenderer::Render(sf::RenderWindow* window, Transform cameraTransform,
 	{
 		mesh->BindTextures();
 		mesh->Render();
+		mesh->Bounds->Debug();
 	}
 
 	glUseProgram(0);
@@ -136,4 +138,62 @@ void OctreeRenderer::Render(sf::RenderWindow* window, Transform cameraTransform,
 	delete[] ldir;
 	delete[] eyePos;
 	delete[] arrDepthMVP;
+}
+
+void OctreeRenderer::RenderAABB()
+{
+	std::stack<Octree*> stack;
+	Octree* node;
+
+	stack.push(octreeInput);
+
+	while (!stack.empty())
+	{
+		node = stack.top();
+		stack.pop();
+
+		node->BBox->Debug();
+		for (auto obj : (*node->sceneObjects))
+		{
+			obj->Bounds->Debug();
+		}
+
+		if (!node->IsEmpty())
+		{
+			// Continue the search frontier.
+			if (node->TopBackLeft != nullptr)
+			{
+				stack.push(node->TopBackLeft);
+			}
+			if (node->TopBackRight != nullptr)
+			{
+				stack.push(node->TopBackRight);
+			}
+			if (node->TopFrontLeft != nullptr)
+			{
+				stack.push(node->TopFrontLeft);
+			}
+			if (node->TopFrontRight != nullptr)
+			{
+				stack.push(node->TopFrontRight);
+			}
+
+			if (node->BottomBackLeft != nullptr)
+			{
+				stack.push(node->BottomBackLeft);
+			}
+			if (node->BottomBackRight != nullptr)
+			{
+				stack.push(node->BottomBackRight);
+			}
+			if (node->BottomFrontLeft != nullptr)
+			{
+				stack.push(node->BottomFrontLeft);
+			}
+			if (node->BottomFrontRight != nullptr)
+			{
+				stack.push(node->BottomFrontRight);
+			}
+		}
+	}
 }

@@ -83,6 +83,11 @@ public:
 	/// Test if the specified bounding box intersects this bounding box.
 	/// </summary>
 	bool Intersects(AABB* other);
+
+	/// <summary>
+	/// Draws lines for each plane of the bounding box.
+	/// </summary>
+	void Debug();
 };
 
 #endif

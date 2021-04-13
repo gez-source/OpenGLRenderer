@@ -4,6 +4,7 @@
 #include "MathHelpers.h"
 #include "AnimatedModelLoader.h"
 #include "TimeManager.h"
+#include "Debug.h"
 
 Renderer::Renderer() : window(nullptr), character00(nullptr), textureCursor(nullptr)
 {
@@ -180,6 +181,8 @@ void Renderer::LoadShaders()
 	
 	shaderBlur = new ShaderProgram("Shaders/blur_vs.glsl", "Shaders/blur_fs.glsl");
 	shaderBloomFinal = new ShaderProgram("Shaders/bloom_final_vs.glsl","Shaders/bloom_final_fs.glsl");
+
+	Debug::DrawLines_Init();
 }
 
 void Renderer::initQuad()
@@ -267,10 +270,14 @@ void Renderer::Render(Transform cameraTransform)
 	//mv2.Translate(Vector3(-0.5f, -0.4f, -2));
 	
 	octreeRenderer->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
+	octreeRenderer->RenderAABB();
 
-	character00->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
-	character01->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
+	//character00->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
+	//character01->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
 	//character02->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
+
+	Debug::DrawLines_RenderDispatch(window, cameraTransform, projectionMatrix, modelview);
+
 	//
 	//ShowShadowMap(cameraTransform);
 	//ShowAOMap();
