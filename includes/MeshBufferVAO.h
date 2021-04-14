@@ -15,6 +15,7 @@ class MeshBufferVAO
 {
 private:
 	Model* model = nullptr;
+	bool quads = false;
 	int verticiesCount = 0;
 	GLuint vao = 0;
 
@@ -22,7 +23,7 @@ private:
 	GLuint textureNormalMap = 0;
 	GLuint textureSpecularMap = 0;
 	GLuint textureGlowMap = 0;
-
+	
 public:
 	
 	AABB* Bounds = nullptr;
