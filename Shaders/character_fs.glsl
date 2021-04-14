@@ -406,7 +406,7 @@ void main()
 	color = color + (outlineColour * outlinePass);
 	
 	frag_colour = vec4(color, 1.0);
-	
+	//frag_colour = vec4(1.0, 0, 0, 1.0);
 	// check whether fragment output is higher than threshold, if so output as brightness color
 	vec3 luminanceThreshold = vec3(0.2126, 0.7152, 0.0722); // luma coefficients
     float brightness = dot(frag_colour.rgb, luminanceThreshold);

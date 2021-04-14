@@ -60,7 +60,7 @@ void Character::RenderModel(sf::RenderWindow* window, Transform cameraTransform,
 	}
 	glFrontFace(GL_CCW);			// GL_CCW for counter clock-wise
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); // GL_FILL GL_LINE
 
 
 	// Draw object with current shader.

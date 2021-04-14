@@ -101,7 +101,10 @@ void Renderer::LoadModels()
 	//character00->LoadModel("Assets/Cars/Audi_R8.obj");
 	//character00->LoadModel("Assets/diablo3_pose/diablo3_pose.obj");
 	//character00->LoadModel("Assets/Dragon.obj");
-	character00->LoadModel("Assets/african_head/african_head.obj");
+
+	character00->LoadModel("Assets/cactus_v1.obj");
+
+	//character00->LoadModel("Assets/african_head/african_head.obj");
 	//character00->LoadModel("Assets/african_head/african_head_eye_inner.obj");
 	//character00->LoadModel("Assets/african_head/african_head_eye_outer.obj");
 	//character00->LoadModel("Assets/Character_A1016A475/aaa.obj");
@@ -243,8 +246,10 @@ void Renderer::Render(Transform cameraTransform)
 	//floor->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
 
 	Matrix4 model = Matrix4::GetIdentity();
+	model.Scale(0.1f);
 	model.Translate(modelview.GetTranslation());
 	model.Translate(Vector3(1.5f, 0, 0));
+	
 
 	character00->lutTexture00 = lutTexture00;
 	character00->lutTexture01 = lutTexture01;
@@ -269,14 +274,14 @@ void Renderer::Render(Transform cameraTransform)
 	//mv2 *= model * modelview;
 	//mv2.Translate(Vector3(-0.5f, -0.4f, -2));
 	
-	octreeRenderer->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
-	octreeRenderer->RenderAABB();
+	//octreeRenderer->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
+	//octreeRenderer->RenderAABB();
 
-	//character00->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
+	character00->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
 	//character01->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
 	//character02->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
 
-	Debug::DrawLines_RenderDispatch(window, cameraTransform, projectionMatrix, modelview);
+	Debug::DrawLines_RenderDispatch(window, cameraTransform, projectionMatrix, model * modelview);
 
 	//
 	//ShowShadowMap(cameraTransform);
