@@ -132,9 +132,6 @@
     <ClCompile Include="src\HE_Vertex.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
-    <ClCompile Include="src\IndexedTriangleSet.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
     <ClCompile Include="src\MathHelpers.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
@@ -151,9 +148,6 @@
       <Filter>Source Files\Math</Filter>
     </ClCompile>
     <ClCompile Include="src\Octree.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PrimitiveProcessor.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
     <ClCompile Include="src\Quad.cpp">
@@ -342,6 +336,9 @@
     <ClCompile Include="src\Debug.cpp">
       <Filter>Source Files\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Random.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\IOHelpers.h">
@@ -389,15 +386,6 @@
     <ClInclude Include="includes\HE_Vertex.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
-    <ClInclude Include="includes\IndexedQuadSet.h">
-      <Filter>Header Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\IndexedSet.h">
-      <Filter>Header Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\IndexedTriangleSet.h">
-      <Filter>Header Files\Math</Filter>
-    </ClInclude>
     <ClInclude Include="includes\MathHelpers.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
@@ -420,9 +408,6 @@
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="includes\ParserState.h">
-      <Filter>Header Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\PrimitiveProcessor.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="includes\Quad.h">
@@ -667,6 +652,9 @@
     </ClInclude>
     <ClInclude Include="includes\Debug.h">
       <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Random.h">
+      <Filter>Header Files\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

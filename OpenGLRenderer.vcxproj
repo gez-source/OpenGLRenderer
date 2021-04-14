@@ -165,7 +165,6 @@
     <ClCompile Include="src\HE_Face.cpp" />
     <ClCompile Include="src\HE_Pair.cpp" />
     <ClCompile Include="src\HE_Vertex.cpp" />
-    <ClCompile Include="src\IndexedTriangleSet.cpp" />
     <ClCompile Include="src\IOHelpers.cpp" />
     <ClCompile Include="src\Joint.cpp" />
     <ClCompile Include="src\JointData.cpp" />
@@ -185,11 +184,11 @@
     <ClCompile Include="src\OctreeRenderer.cpp" />
     <ClCompile Include="src\OpenGLExt.cpp" />
     <ClCompile Include="src\OpenGlUtils.cpp" />
-    <ClCompile Include="src\PrimitiveProcessor.cpp" />
     <ClCompile Include="src\pugixml.cpp" />
     <ClCompile Include="src\Quad.cpp" />
     <ClCompile Include="src\Quadtree.cpp" />
     <ClCompile Include="src\Quaternion.cpp" />
+    <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\Ray.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\ShaderHelpers.cpp" />
@@ -250,6 +249,7 @@
     <ClInclude Include="includes\MessageQueue.h" />
     <ClInclude Include="includes\NoiseHelpers.h" />
     <ClInclude Include="includes\OctreeRenderer.h" />
+    <ClInclude Include="includes\Random.h" />
     <ClInclude Include="includes\Skybox.h" />
     <ClInclude Include="includes\Terrain.h" />
     <ClInclude Include="includes\TimeManager.h" />
@@ -263,9 +263,6 @@
     <ClInclude Include="includes\HE_Face.h" />
     <ClInclude Include="includes\HE_Pair.h" />
     <ClInclude Include="includes\HE_Vertex.h" />
-    <ClInclude Include="includes\IndexedQuadSet.h" />
-    <ClInclude Include="includes\IndexedSet.h" />
-    <ClInclude Include="includes\IndexedTriangleSet.h" />
     <ClInclude Include="includes\IOHelpers.h" />
     <ClInclude Include="includes\Joint.h" />
     <ClInclude Include="includes\JointData.h" />
@@ -286,7 +283,6 @@
     <ClInclude Include="includes\OpenGLExt.h" />
     <ClInclude Include="includes\OpenGlUtils.h" />
     <ClInclude Include="includes\ParserState.h" />
-    <ClInclude Include="includes\PrimitiveProcessor.h" />
     <ClInclude Include="includes\pugiconfig.hpp" />
     <ClInclude Include="includes\pugixml.hpp" />
     <ClInclude Include="includes\Quad.h" />

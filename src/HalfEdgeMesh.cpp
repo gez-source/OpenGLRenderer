@@ -260,20 +260,20 @@ HalfEdgeMesh* HalfEdgeMesh::CreateDummyMesh()
 	edge_1_5->Other = edge_0_2;
 
 
-	//HACK: Hack so that current Triangle renderer can be used
-	Triangle* t0 = new Triangle(edge_0_0->Vertex->Attributes->Vertex, edge_0_1->Vertex->Attributes->Vertex, edge_0_2->Vertex->Attributes->Vertex);
-	Triangle* t1 = new Triangle(edge_1_3->Vertex->Attributes->Vertex, edge_1_4->Vertex->Attributes->Vertex, edge_1_5->Vertex->Attributes->Vertex);
+	////HACK: Hack so that current Triangle renderer can be used
+	//Triangle* t0 = new Triangle(edge_0_0->Vertex->Attributes->Vertex, edge_0_1->Vertex->Attributes->Vertex, edge_0_2->Vertex->Attributes->Vertex);
+	//Triangle* t1 = new Triangle(edge_1_3->Vertex->Attributes->Vertex, edge_1_4->Vertex->Attributes->Vertex, edge_1_5->Vertex->Attributes->Vertex);
 
-	t0->normal00 = t0->SurfaceNormal();
-	t0->normal01 = t0->SurfaceNormal();
-	t0->normal10 = t0->SurfaceNormal();
+	//t0->normal00 = t0->SurfaceNormal();
+	//t0->normal01 = t0->SurfaceNormal();
+	//t0->normal10 = t0->SurfaceNormal();
 
-	t1->normal00 = t1->SurfaceNormal();
-	t1->normal01 = t1->SurfaceNormal();
-	t1->normal10 = t1->SurfaceNormal();
+	//t1->normal00 = t1->SurfaceNormal();
+	//t1->normal01 = t1->SurfaceNormal();
+	//t1->normal10 = t1->SurfaceNormal();
 
-	face0.t = t0;
-	face1.t = t1;
+	//face0.t = t0;
+	//face1.t = t1;
 	face0.FaceIndex = 0;
 	face1.FaceIndex = 1;
 
@@ -282,18 +282,6 @@ HalfEdgeMesh* HalfEdgeMesh::CreateDummyMesh()
 	dummy->SetRoot(&face0);
 
 	return dummy;
-}
-
-void HalfEdgeMesh::AddQuadSet(IndexedQuadSet* quadSet)
-{
-	_tmpAdjacencyList->AddQuadSet(quadSet);
-}
-
-void HalfEdgeMesh::AddTriangleSet(IndexedTriangleSet* triangleSet)
-{
-	// Sort polygons into a geometry using a tempoary intermediate list 
-
-	_tmpAdjacencyList->AddTriangleSet(triangleSet);
 }
 
 void HalfEdgeMesh::FindAdjacencies()

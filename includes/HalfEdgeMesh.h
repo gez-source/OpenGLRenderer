@@ -9,8 +9,6 @@
 #include "Vector3.h"
 #include "HE_Face.h"
 #include "HE_AdjacencyList.h"
-#include "IndexedQuadSet.h"
-#include "IndexedTriangleSet.h"
 #include "Octree.h"
 #include "Quadtree.h"
 
@@ -20,7 +18,6 @@ class HE_AdjacencyList;
 class HE_Vertex;
 class HE_Face;
 class HE_Edge;
-class IndexedTriangleSet;
 class QuadTree;
 
 class HalfEdgeMesh
@@ -56,10 +53,6 @@ public:
 	//static HalfEdgeMesh* ProcessWavefrontIntoMesh(WOBJ_Mesh polygonalMesh);
 
 	static HalfEdgeMesh* CreateDummyMesh();
-
-	void AddQuadSet(IndexedQuadSet* quadSet);
-
-	void AddTriangleSet(IndexedTriangleSet* triangleSet);
 
 	void FindAdjacencies();
 

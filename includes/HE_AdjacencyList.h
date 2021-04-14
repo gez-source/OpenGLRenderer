@@ -4,8 +4,6 @@
 #include <vector>
 #include "HE_Vertex.h"
 #include "HE_Face.h"
-#include "IndexedQuadSet.h"
-#include "IndexedTriangleSet.h"
 
 class HE_Vertex;
 class HE_Face;
@@ -21,10 +19,6 @@ public:
 	std::vector<HE_Face>* FaceList;
 
 	HE_AdjacencyList();
-
-	void AddQuadSet(IndexedQuadSet* quadSet);
-
-	void AddTriangleSet(IndexedTriangleSet* triangleSet);
 
 	void FindAdjacencies();
 };

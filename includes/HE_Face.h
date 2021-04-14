@@ -3,23 +3,22 @@
 
 
 #include "Matrix4.h"
-#include "IndexedTriangleSet.h"
 #include "HE_Edge.h"
 #include "HE_Pair.h"
+#include "HE_Vertex.h"
 #include "FaceAttributes.h"
-#include "Triangle.h"
 #include <vector>
 
 class HE_Pair;
 class HE_Face;
-class IndexedTriangleSet;
+class HE_Vertex;
 
 class HE_Face
 {
 public:
 	FaceAttributes* Attributes;
 
-	Triangle* t;
+	//Triangle* t;
 	int VertexCount = 0;
 	int FaceIndex = -1;
 
@@ -82,7 +81,7 @@ public:
 	static bool HasSharedEdge(HE_Face* face, HE_Face* compareTo, HE_Pair* pair);
 
 
-	Triangle GetPrimitive();
+	//Triangle GetPrimitive();
 
 	std::vector<HE_Vertex>* GetVertexes();
 
@@ -90,14 +89,14 @@ public:
 
 	std::vector<Vector3>* GetNormals();
 
-	static HE_Face* GetFace(IndexedTriangleSet* triangleSet, int faceIndex);
+	//static HE_Face* GetFace(IndexedTriangleSet* triangleSet, int faceIndex);
 
 	//TODO: Refactor
 
-	void GetFace(IndexedTriangleSet* triangleSet, int faceIndex, int vertexSet);
+	//void GetFace(IndexedTriangleSet* triangleSet, int faceIndex, int vertexSet);
 
 	//TODO: Refactor
-	void GetEdges(int polyIndex, Vector3 v00, Vector3 v01, Vector3 v10, Triangle* t);
+	//void GetEdges(int polyIndex, Vector3 v00, Vector3 v01, Vector3 v10, Triangle* t);
 
 	/// <summary>
 	/// Get the faces which border the half-edge.
@@ -114,7 +113,7 @@ public:
 	/// <returns></returns>
 	std::vector<HE_Edge>* GetEdges();
 
-	std::vector<Triangle>* GetTriangles();
+	//std::vector<Triangle>* GetTriangles();
 };
 
 #endif
