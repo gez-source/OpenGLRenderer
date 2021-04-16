@@ -214,6 +214,7 @@
     <ClCompile Include="src\Vector4.cpp" />
     <ClCompile Include="src\Vertex.cpp" />
     <ClCompile Include="src\VertexSkinData.cpp" />
+    <ClCompile Include="src\VirtualWorld.cpp" />
     <ClCompile Include="src\WavefrontOBJMeshImporter.cpp" />
     <ClCompile Include="src\WOBJ_Face.cpp" />
     <ClCompile Include="src\WOBJ_Mesh.cpp" />
@@ -319,6 +320,7 @@
     <ClInclude Include="includes\Vertex.h" />
     <ClInclude Include="includes\VertexAttributes.h" />
     <ClInclude Include="includes\VertexSkinData.h" />
+    <ClInclude Include="includes\VirtualWorld.h" />
     <ClInclude Include="includes\WavefrontEnums.h" />
     <ClInclude Include="includes\WavefrontOBJMeshImporter.h" />
     <ClInclude Include="includes\WOBJ_Face.h" />
