@@ -15,14 +15,9 @@
 #include "Transform.h"
 #include "MathHelpers.h"
 #include "ShaderHelpers.h"
-#include "Character.h"
-#include "AnimatedModel.h"
-#include "AnimatedModelRenderer.h"
-#include "Skybox.h"
-#include "Terrain.h"
 #include "FileWatcher.h"
 #include "MessageQueue.h"
-#include "OctreeRenderer.h"
+#include "VirtualWorld.h"
 
 class Renderer
 {
@@ -48,25 +43,8 @@ private:
 	int screenQuadVertexCount = 0;
 	bool noErrors = true;
 	Texture* textureCursor;
-	Character* floor;
-	Character* character00;
-	Character* character01;
-	Character* character02;
-	AnimatedModel* animModel;
-	Texture* animDiffuseTexture;
-	Texture* animNormalTexture;
-	Texture* animSpecularTexture;
-	Texture* lutTexture00;
-	Texture* lutTexture01;
-	Texture* lutTexture02;
-	Texture* lutTexture03;
-	Texture* lutTexture04;
-	Animation* selectedAnimation;
-	Animator* animator;
-	AnimatedModelRenderer* animRenderer;
-	Skybox* skybox;
-	Terrain* terrain;
-	OctreeRenderer* octreeRenderer;
+	VirtualWorld* virtualWorld;
+
 	FileWatcher* fw;
 	MessageQueue* messageQueue;
 	GLuint noiseTexture;
@@ -85,6 +63,7 @@ public:
 	Matrix4 modelview;
 	Matrix4 lightModelView;
 	Vector3 lightDir = Vector3(0, 0, 0);
+	Vector3 worldPosition = Vector3::Zero;
 
 	Renderer();
 	~Renderer();

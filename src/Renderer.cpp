@@ -6,12 +6,14 @@
 #include "TimeManager.h"
 #include "Debug.h"
 
-Renderer::Renderer() : window(nullptr), character00(nullptr), textureCursor(nullptr)
+Renderer::Renderer() : window(nullptr), textureCursor(nullptr)
 {
 
 }
 Renderer::~Renderer()
 {
+	delete virtualWorld;
+
 	delete vaoCursor;
 	delete textureCursor;
 	delete fw;
@@ -85,93 +87,12 @@ void Renderer::OnResize(int width, int height)
 
 void Renderer::LoadModels()
 {
-	//floor = new Character();
-	//floor->LoadModel("Assets/floor.obj");
-	//floor->LoadTextures();
 
-	lutTexture00 = Texture::LoadTexture("Assets/lut00.tga").Anisotropic()->ClampEdges()->Create();
-	lutTexture01 = Texture::LoadTexture("Assets/lut01.tga").Anisotropic()->ClampEdges()->Create();
-	lutTexture02 = Texture::LoadTexture("Assets/lut02.tga").Anisotropic()->ClampEdges()->Create();
-	lutTexture03 = Texture::LoadTexture("Assets/lut03.tga").Anisotropic()->ClampEdges()->Create();
-	lutTexture04 = Texture::LoadTexture("Assets/lut04.tga").Anisotropic()->ClampEdges()->Create();
 
-	character00 = new Character();
-	//character00->LoadModel("Assets/boggie/body.obj");
-	//character00->LoadModel("Assets/Harpy/Harpy.obj");
-	//character00->LoadModel("Assets/Cars/Audi_R8.obj");
-	//character00->LoadModel("Assets/diablo3_pose/diablo3_pose.obj");
-	//character00->LoadModel("Assets/Dragon.obj");
 
-	character00->LoadModel("Assets/cactus_v1.obj");
 
-	//character00->LoadModel("Assets/african_head/african_head.obj");
-	//character00->LoadModel("Assets/african_head/african_head_eye_inner.obj");
-	//character00->LoadModel("Assets/african_head/african_head_eye_outer.obj");
-	//character00->LoadModel("Assets/Character_A1016A475/aaa.obj");
-	//character00->LoadModel("Assets/pistol.obj");
-	//character00->LoadModel("Assets/deagle.obj");
-	//character00->LoadModel("Assets/teapot.obj");
-	character00->LoadTextures();
-	
-	character01 = new Character();
-	//character01->LoadModel("Assets/Harpy/Harpy.obj");
-	//character01->LoadModel("Assets/boggie/head.obj");
-	character01->LoadModel("Assets/african_head/african_head_eye_inner.obj");
-	character01->LoadTextures();
-
-	//character02 = new Character();
-	//character02->LoadModel("Assets/boggie/eyes.obj");
-	//character02->LoadModel("Assets/african_head/african_head_eye_outer.obj");
-	//character02->LoadTextures();
-
-	//std::string model = "Assets/Audi_R8_3D_Model/coche_high_fin.dae";
-	//animModel = AnimatedModelLoader::LoadModel(model);
-	//animRenderer = new AnimatedModelRenderer();
-	//animDiffuseTexture = Texture::LoadTexture("Assets/Animations/diffuse.tga").Anisotropic()->Create();
-	//selectedAnimation = animModel->getAnimation();
-	//animator = new Animator(animModel);
-	//animator->doAnimation(selectedAnimation);
-	
-	//std::string model = "Assets/Animations/model2.dae";
-	//animModel = AnimatedModelLoader::LoadModel(model);
-	//animRenderer = new AnimatedModelRenderer();
-	//animDiffuseTexture = Texture::LoadTexture("Assets/Animations/diffuse.tga").Anisotropic()->Create();
-	//selectedAnimation = animModel->getAnimation();
-	//animator = new Animator(animModel);
-	//animator->doAnimation(selectedAnimation);
-	
-	//animDiffuseTexture = Texture::LoadTexture("Assets/african_head/african_head_diffuse.tga").Anisotropic()->Create();
-	//animNormalTexture = Texture::LoadTexture("Assets/african_head/african_head_nm_tangent.tga").Anisotropic()->Create();
-	//animSpecularTexture = Texture::LoadTexture("Assets/african_head/african_head_spec.tga").Anisotropic()->Create();
-	//std::string model = "Assets/african_head/african_head.dae";
-	//animModel = AnimatedModelLoader::LoadModel(model);
-	//animRenderer = new AnimatedModelRenderer();
-	//selectedAnimation = animModel->getAnimation();
-	//animator = new Animator(animModel);
-	//animator->doAnimation(selectedAnimation);
-
-	//std::string model = "Assets/Animations/Mannequin_figure/free3DmodelDAE/free3Dmodel2.dae";
-	//std::string anim = "Assets/Animations/Mannequin_figure/Male_Locomotion_PackDAE/walking.dae";
-	//animModel = AnimatedModelLoader::LoadModel(model);
-	//AnimatedModel* animModel2 = AnimatedModelLoader::LoadModel(anim);
-	//animRenderer = new AnimatedModelRenderer();
-	//animDiffuseTexture = Texture::LoadTexture("Assets/Animations/diffuse.tga").Anisotropic()->Create();
-	//selectedAnimation = animModel2->getAnimation();
-	//animator = new Animator(animModel);
-	//animator->doAnimation(selectedAnimation);
-
-	//skybox = new Skybox("Assets/mp_midnight/midnight-silence_rt.tga", "Assets/mp_midnight/midnight-silence_lf.tga", "Assets/mp_midnight/midnight-silence_up.tga", "Assets/mp_midnight/midnight-silence_dn.tga", "Assets/mp_midnight/midnight-silence_bk.tga", "Assets/mp_midnight/midnight-silence_ft.tga");
-
-	//terrain = new Terrain();
-
-	octreeRenderer = new OctreeRenderer();
-	octreeRenderer->Initilise();
-	octreeRenderer->AddOBJToOctree(character00->meshBuffer);
-	octreeRenderer->lutTexture00 = lutTexture00;
-	octreeRenderer->lutTexture01 = lutTexture01;
-	octreeRenderer->lutTexture02 = lutTexture02;
-	octreeRenderer->lutTexture03 = lutTexture03;
-	octreeRenderer->lutTexture04 = lutTexture04;
+	virtualWorld = new VirtualWorld();
+	virtualWorld->Initilise();
 
 	InitNoiseMap();
 }
@@ -243,70 +164,24 @@ void Renderer::Render(Transform cameraTransform)
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//floor->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
 
-	Matrix4 model = Matrix4::GetIdentity();
-	model.Scale(0.1f);
-	model.Translate(modelview.GetTranslation());
-	model.Translate(Vector3(1.5f, 0, 0));
-	
 
-	character00->lutTexture00 = lutTexture00;
-	character00->lutTexture01 = lutTexture01;
-	character00->lutTexture02 = lutTexture02;
-	character00->lutTexture03 = lutTexture03;
-	character00->lutTexture04 = lutTexture04;
 
-	character01->lutTexture00 = lutTexture00;
-	character01->lutTexture01 = lutTexture01;
-	character01->lutTexture02 = lutTexture02;
-	character01->lutTexture03 = lutTexture03;
-	character01->lutTexture04 = lutTexture04;
-
-	//character02->lutTexture00 = lutTexture00;
-	//character02->lutTexture01 = lutTexture01;
-	//character02->lutTexture02 = lutTexture02;
-	//character02->lutTexture03 = lutTexture03;
-	//character02->lutTexture04 = lutTexture04;
 
 	//Matrix4 mv2 = Matrix4::GetIdentity();
 	//mv2.Scale(Vector3::One * 0.1f);
 	//mv2 *= model * modelview;
 	//mv2.Translate(Vector3(-0.5f, -0.4f, -2));
 	
-	//octreeRenderer->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
-	//octreeRenderer->RenderAABB();
 
-	character00->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
-	//character01->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
-	//character02->Render(window, cameraTransform, projectionMatrix, model * modelview, lightDir, lightModelView);
+	virtualWorld->worldPosition = this->worldPosition;
 
-	Debug::DrawLines_RenderDispatch(window, cameraTransform, projectionMatrix, model * modelview);
+	virtualWorld->Render(window, cameraTransform, projectionMatrix, modelview, lightDir, lightModelView);
+
 
 	//
 	//ShowShadowMap(cameraTransform);
 	//ShowAOMap();
-
-	// Show Actor
-	//animator->update();
-	//if(animDiffuseTexture != nullptr) animDiffuseTexture->bindToUnit(0);
-	//if(animNormalTexture != nullptr) animNormalTexture->bindToUnit(1);
-	//if(animSpecularTexture != nullptr) animSpecularTexture->bindToUnit(2);
-	//if (lutTexture00 != nullptr) lutTexture00->bindToUnit(4);
-	//if (lutTexture01 != nullptr) lutTexture01->bindToUnit(5);
-	//if (lutTexture02 != nullptr) lutTexture02->bindToUnit(6);
-	//if (lutTexture03 != nullptr) lutTexture03->bindToUnit(7);
-	//if (lutTexture04 != nullptr) lutTexture04->bindToUnit(8);
-	//animRenderer->render(animModel, cameraTransform, projectionMatrix, modelview, lightDir);
-
-	//terrain->lutTexture00 = lutTexture00;
-	//terrain->lutTexture01 = lutTexture01;
-	//terrain->lutTexture02 = lutTexture02;
-	//terrain->lutTexture03 = lutTexture03;
-	//terrain->lutTexture04 = lutTexture04;
-
-	//terrain->Render(cameraTransform, projectionMatrix, lightDir);
-	//skybox->Render(cameraTransform, projectionMatrix);
 
 	if (bloom)
 	{
@@ -367,7 +242,7 @@ void Renderer::Render(Transform cameraTransform)
 
 	if (hasFocus && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num0))
 	{
-		terrain->Initilise();
+		//terrain->Initilise();
 
 		// Update noise map
 		noisePixelData = GetNoisePixelData(freq, amp, pers, octaves, scaleX, scaleY, scaleZ);
@@ -536,7 +411,7 @@ void Renderer::ShowShadowMap(Transform cameraTransform)
 	glUniform1i(glGetUniformLocation(programScreenQuad, "depthTexture"), 0);
 	
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, character00->depthTexture);
+	glBindTexture(GL_TEXTURE_2D, virtualWorld->character00->depthTexture);
 	//glRecti(-1, -1, 1, 1);
 	glBindVertexArray(vaoScreenQuad);
 	glEnableVertexAttribArray(0);
@@ -588,7 +463,7 @@ void Renderer::ShowAOMap()
 	glUniform1i(glGetUniformLocation(programScreenQuadAO, "depthTexture"), 0);
 
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, character00->aoTexture);
+	glBindTexture(GL_TEXTURE_2D, virtualWorld->character00->aoTexture);
 	glBindVertexArray(vaoScreenQuad);
 	glEnableVertexAttribArray(0);
 	glDrawArrays(GL_TRIANGLES, 0, screenQuadVertexCount);
