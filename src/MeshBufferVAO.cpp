@@ -276,6 +276,8 @@ void MeshBufferVAO::LoadModel(std::string fileNameModel)
 	model = new Model(fileNameModel);
 
 	LoadModelBuffers(model, verticies, texCoords, normals, tangents, bitangents, verticiesCount);
+	
+	if (verticies.size() == 0) throw "Verticies could not be found.";
 
 	GLuint points_vbo;
 	glGenBuffers(1, &points_vbo);
