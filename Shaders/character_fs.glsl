@@ -1,5 +1,31 @@
 #version 420
 
+struct DirLight 
+{
+    vec3 direction;
+  
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+	int isActive; // If the light is active
+};  
+
+struct PointLight 
+{    
+    vec3 position;
+    
+    float constant;
+    float linear;
+    float quadratic;  
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+	int isActive; // If the light is active
+};  
+
 struct Light 
 {
     vec3 position;
@@ -46,10 +72,20 @@ layout(binding=6) uniform sampler2D lut01;
 layout(binding=7) uniform sampler2D lut02;
 layout(binding=8) uniform sampler2D lut03;
 layout(binding=9) uniform sampler2D lut04;
+
 uniform float near_plane;
 uniform float far_plane;
 uniform vec3 eye;
 uniform int outlinePass;
+
+//uniform DirLight dirLight;
+
+#define NR_POINT_LIGHTS 40
+uniform int numPointLights;
+uniform PointLight pointLights[NR_POINT_LIGHTS];
+
+//#define NR_SPOT_LIGHTS 4  
+//uniform Light spotLights[NR_SPOT_LIGHTS];
 
 const float PI = 3.14159265359;
   
@@ -254,7 +290,42 @@ vec3 ADSE_Lighting(vec3 emissive, float emissiveness,
 	return lighting;
 }
 
+vec3 CalcDirLight(DirLight light, PBRMaterial material, vec3 normal, vec3 viewDir)
+{
+    vec3 lightDir = normalize(-light.direction);
+    // diffuse shading
+    float diff = max(dot(normal, lightDir), 0.0);
+    // specular shading
+    vec3 reflectDir = reflect(-lightDir, normal);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    // combine results
+    vec3 ambient  = light.ambient;//  * vec3(texture(material.diffuse, TexCoords));
+    vec3 diffuse  = light.diffuse  * diff; // * vec3(texture(material.diffuse, TexCoords));
+    vec3 specular = light.specular * spec; // * vec3(texture(material.specular, TexCoords));
+    return (ambient + diffuse + specular) * light.isActive;
+} 
 
+vec3 CalcPointLight(PointLight light, PBRMaterial material, vec3 normal, vec3 fragPos, vec3 viewDir)
+{
+    vec3 lightDir = normalize(light.position - fragPos);
+    // diffuse shading
+    float diff = max(dot(normal, lightDir), 0.0);
+    // specular shading
+    vec3 reflectDir = reflect(-lightDir, normal);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    // attenuation
+    float distance    = length(light.position - fragPos);
+    float attenuation = 1.0 / (light.constant + light.linear * distance + 
+  			     light.quadratic * (distance * distance));    
+    // combine results
+    vec3 ambient  = light.ambient;//  * vec3(texture(material.diffuse, TexCoords));
+    vec3 diffuse  = light.diffuse  * diff;// * vec3(texture(material.diffuse, TexCoords));
+    vec3 specular = light.specular * spec;// * vec3(texture(material.specular, TexCoords));
+    ambient  *= attenuation;
+    diffuse  *= attenuation;
+    specular *= attenuation;
+    return (ambient + diffuse + specular) * light.isActive;
+} 
 
 void main() 
 {
@@ -308,7 +379,11 @@ void main()
 	//diffuseValue = 1.0;
 	visibility = 1.0;
 
-	frag_colour = vec4(ADSE_Lighting(emissive, emissiveness, ambient, light_ambient, diffuse, diffuseValue, specular, specularValue, visibility), 1.0);
+	vec3 light_contribution = vec3(0.0);
+
+
+	//light_contribution += ADSE_Lighting(emissive, emissiveness, ambient, light_ambient, diffuse, diffuseValue, specular, specularValue, visibility);
+	//frag_colour = vec4(light_contribution, 1.0);
 	
 	// material parameters
 	vec3  albedo = vec3(1,1,1);
@@ -328,6 +403,7 @@ void main()
 
 	// For each light
 	Light light;
+	DirLight dirLight;
 	PBRMaterial material;
 	material.albedo = albedo;
 	material.specular = vec3(1,1,1);
@@ -343,53 +419,25 @@ void main()
 	light.colour = vec3(1,1,1);
 	light.position = lightDirection * 1;
 	
-	vec3 light_contribution = vec3(0.0);
+	dirLight.direction = vec3(0,-1,0);
+	dirLight.ambient = vec3(0,0,0);
+	dirLight.diffuse = vec3(1,0,0);
+	dirLight.specular = vec3(1,0,0);
+	dirLight.isActive = 1;
+
 	// For each light append contribution
 	light_contribution += PBR_Lighting(FragPosition, viewDir, n, light, material);
 	
-	// vec3 F0 = vec3(0.04); 
-	// F0 = mix(F0, material.albedo, material.metallic);
-	// // reflectance equation
-
-	// // calculate per-light radiance
 	// vec3 L = normalize(light.position - FragPosition);
-	// vec3 H = normalize(viewDir + L);
-	// float distance    = length(light.position - FragPosition);
-	// //float attenuation = 1.0 / (distance * distance);
-	// float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
-	// vec3 radiance     = light.colour * attenuation;        
-	
-	// // cook-torrance brdf
-	// float NDF = DistributionGGX(n, H, material.roughness);        
-	// float G   = GeometrySmith(n, viewDir, L, material.roughness);      
-	// vec3 F    = fresnelSchlick(max(dot(H, viewDir), 0.0), F0);       
-	
-	// vec3 kS = F;
-	// vec3 kD = vec3(1.0) - kS;
-	// kD *= 1.0 - material.metallic;
-	
-	// vec3 numerator    = NDF * G * F;
-	// float denominator = 4.0 * max(dot(n, viewDir), 0.0) * max(dot(n, L), 0.0);
-	// vec3 specular2     = (numerator / max(denominator, 0.001)) * 0.01;  
-	// //specular2     = numerator / denominator;   
-	// //specular2     = numerator / abs(denominator);  
 
-	// float specularValue2 = SpecularLighting(material.specular.r, material.gMatSpecularIntensity, material.shininess, lightDir, viewDir, n);
-	
-	// // add to outgoing radiance Lo light_contribution
-	// float surfaceFactor = max(dot(n, L), 0.0);
-	
-	// light_contribution += ((kD * (material.albedo / PI)) + ((material.specular * specularValue2) + specular2)) * surfaceFactor * radiance;
-	
-  
     vec3 ambient2 = vec3(0.03) * material.albedo * material.ao;
 
 	//vec3 luminanceThreshold2 = vec3(0.2126, 0.7152, 0.0722); // luma coefficients
     //float brightness2 = dot(light_contribution.rgb, luminanceThreshold2);
 	//light_contribution =  light_contribution * CelShading((light_contribution.r + light_contribution.g + light_contribution.b) / 3);
 	//light_contribution =  light_contribution * CelShading(brightness2);
-	
-    vec3 color = ambient2 + (emissive * emissiveness) + (light_contribution);
+
+    vec3 colour = ambient2 + (emissive * emissiveness) + (light_contribution);
 	
     //color = color / (color + vec3(1.0)); // normalise to LDR
     //color = pow(color, vec3(1.0/2.2));   // gamma correct
@@ -399,20 +447,30 @@ void main()
 
 	vec3 outlineColour = vec3(1,1,1);
 	vec3 S0 = step(vec3(diff), vec3(0));
-	vec3 S1 = step(vec3(diff), vec3(1) * 0.1);
+	vec3 S1 = step(vec3(diff), vec3(1) * 1.1);
 	vec3 outliner = S1 - S0;
 
-    //color = color + outliner * outlineColour;
-	color = color + (outlineColour * outlinePass);
+    //colour = colour + outliner * outlineColour;
+	colour = colour + (outlineColour * outlinePass);
+	//colour = colour + (outliner * outlineColour * outlinePass);
 	
-	frag_colour = vec4(color, 1.0);
+	// Final lighting calculations:
+	// Directional lights.
+	colour += CalcDirLight(dirLight, material, n, viewDir);
+	// Point lights.
+	for(int i = 0; i < numPointLights; i++)
+    {
+		colour += CalcPointLight(pointLights[i], material, n, FragPos, viewDir); 
+	}
+	
+	frag_colour = vec4(colour, 1.0);
 	//frag_colour = vec4(1.0, 0, 0, 1.0);
 	// check whether fragment output is higher than threshold, if so output as brightness color
 	vec3 luminanceThreshold = vec3(0.2126, 0.7152, 0.0722); // luma coefficients
     float brightness = dot(frag_colour.rgb, luminanceThreshold);
 	
 	bright_color = vec4(frag_colour.rgb * when_gt(brightness, 1.0), 1.0);
-	
+
     // if(brightness > 1.0)
 	// {
 		// bright_color = vec4(frag_colour.rgb, 1.0);
