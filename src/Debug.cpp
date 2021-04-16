@@ -71,18 +71,18 @@ void Debug::DrawLines_RenderDispatch(sf::RenderWindow* window, Transform cameraT
 
 	if (hasLines)
 	{
-		int verticiesCount = verticies.size();
+		int verticiesCount = verticies.size() / 3;
 		GLuint vao = 0;
 
 		GLuint points_vbo;
 		glGenBuffers(1, &points_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, points_vbo);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * verticies.size(), &verticies[0], GL_STATIC_DRAW);
-
+		glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * verticies.size(), verticies.data(), GL_STATIC_DRAW);
+		
 		GLuint colours_vbo;
 		glGenBuffers(1, &colours_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, colours_vbo);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * colours.size(), &colours[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * colours.size(), colours.data(), GL_STATIC_DRAW);
 
 		glGenVertexArrays(1, &vao);
 		glBindVertexArray(vao);
@@ -136,6 +136,8 @@ void Debug::DrawLines_RenderDispatch(sf::RenderWindow* window, Transform cameraT
 		delete[] arrViewMat;
 
 		// Free/delete line buffer from GPU.
+		glDeleteBuffers(1, &points_vbo);
+		glDeleteBuffers(1, &colours_vbo);
 		glDeleteVertexArrays(1, &vao);
 
 		// Clear queue of lines for next time.
