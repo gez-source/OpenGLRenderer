@@ -80,6 +80,7 @@ int main()
 		}
 		renderer.modelview = characterController.modelview;
 		renderer.lightModelView = characterController.lightModelView;
+		renderer.worldPosition = characterController.worldPosition;
 
 		// draw...
 		renderer.Render(characterController.cameraTransform);

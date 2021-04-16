@@ -162,6 +162,7 @@ void CharacterController::PollInput()
 
 	cameraTransform.Rotate(rotation.x* rotSpeed, rotation.y* rotSpeed, rotation.z* rotSpeed);
 	cameraTransform.Translate(Vector3::Multiply(direction, movementSpeed));
+	worldPosition = Vector3::Multiply(direction, movementSpeed);
 
 	modelview = modelview * Quaternion::Euler(modelRotation.x * rotSpeed, modelRotation.y * rotSpeed, modelRotation.z * rotSpeed).RotationMatrix();
 

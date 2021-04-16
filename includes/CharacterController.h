@@ -19,6 +19,7 @@ public:
 	float				sprint				= 0.7f;
 	float               speed				= 0.1f;
 	float               rotSpeed			= 1.5f;
+	Vector3				worldPosition		= Vector3::Zero;
 
 	Transform			cameraTransform;
 	Matrix4				modelview			= Matrix4::GetIdentity();
