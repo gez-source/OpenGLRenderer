@@ -22,7 +22,8 @@ enum ShaderType
 class ShaderProgram 
 {
 private:
-	static std::map<std::string, ShaderProgram*> linkedPrograms;
+	//static std::map<std::string, ShaderProgram*> linkedPrograms;
+	static std::multimap<std::string, ShaderProgram*> linkedPrograms;
 	static std::map<std::string, ShaderType> mapShaderType;
 
 	std::string vertexFile;

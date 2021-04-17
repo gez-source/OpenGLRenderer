@@ -1,7 +1,8 @@
 #include "ShaderProgram.h"
 #include <filesystem>
 
-std::map<std::string, ShaderProgram*> ShaderProgram::linkedPrograms;
+//std::map<std::string, ShaderProgram*> ShaderProgram::linkedPrograms;
+std::multimap<std::string, ShaderProgram*> ShaderProgram::linkedPrograms;
 std::map<std::string, ShaderType> ShaderProgram::mapShaderType;
 
 ShaderProgram::ShaderProgram() : vertexShaderID(0), fragmentShaderID(0), programID(0)
@@ -59,14 +60,16 @@ void ShaderProgram::RecompileShader(std::string filename)
 		{
 			shaderProgram = it.second;
 
-			break;
+			if (shaderProgram != nullptr && shaderType != ShaderType::ST_Unknown)
+			{
+				HotSwap(filename, shaderType, shaderProgram);
+			}
+
+			//break;
 		}
 	}
 	
-	if(shaderProgram != nullptr && shaderType != ShaderType::ST_Unknown)
-	{
-		HotSwap(filename, shaderType, shaderProgram);
-	}
+
 }
 
 void ShaderProgram::HotSwap(std::string filename, ShaderType shaderType, ShaderProgram* shaderProgram)
