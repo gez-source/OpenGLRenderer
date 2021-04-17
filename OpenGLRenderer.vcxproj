@@ -111,6 +111,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external\XPath3\includes;$(SolutionDir)includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
