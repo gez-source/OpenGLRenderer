@@ -7,6 +7,7 @@ struct DirLight
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
+	float intensity;
 
 	int isActive; // If the light is active
 };  
@@ -302,7 +303,7 @@ vec3 CalcDirLight(DirLight light, PBRMaterial material, vec3 normal, vec3 viewDi
     vec3 ambient  = light.ambient;//  * vec3(texture(material.diffuse, TexCoords));
     vec3 diffuse  = light.diffuse  * diff; // * vec3(texture(material.diffuse, TexCoords));
     vec3 specular = light.specular * spec; // * vec3(texture(material.specular, TexCoords));
-    return (ambient + diffuse + specular) * light.isActive;
+    return (ambient + diffuse + specular) * light.isActive * light.intensity;
 } 
 
 vec3 CalcPointLight(PointLight light, PBRMaterial material, vec3 normal, vec3 fragPos, vec3 viewDir)
@@ -421,8 +422,9 @@ void main()
 	
 	dirLight.direction = vec3(0,-1,0);
 	dirLight.ambient = vec3(0,0,0);
-	dirLight.diffuse = vec3(1,0,0);
-	dirLight.specular = vec3(1,0,0);
+	dirLight.diffuse = vec3(1,1,1);
+	dirLight.specular = vec3(1,1,1);
+	dirLight.intensity = 0.4;
 	dirLight.isActive = 1;
 
 	// For each light append contribution
