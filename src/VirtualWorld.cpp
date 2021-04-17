@@ -151,7 +151,7 @@ void VirtualWorld::Render(sf::RenderWindow* window, Transform cameraTransform, M
 	Matrix4 model_floor = Matrix4::GetIdentity();
 	model_floor.Scale(10.0f);
 
-	floor->Render(window, cameraTransform, projectionMatrix, model_floor * modelview, light_dir, lightModelView);
+	floor->Render(window, cameraTransform, projectionMatrix, model_floor, light_dir, lightModelView);
 
 
 	Matrix4 model = Matrix4::GetIdentity();
