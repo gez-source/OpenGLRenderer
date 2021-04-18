@@ -161,6 +161,8 @@
 
 		Vector3 TransformVector(Vector3 vector);
 
+		Vector3 TransformPosition(Vector3 vector);
+
 		Vector3 TransformNormal(Vector3 normal);
 
 		static Vector3 TransformNormal(Matrix4 transform, Vector3 normal);

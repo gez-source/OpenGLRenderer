@@ -508,7 +508,7 @@
 	{
 		Vector4 Row3 = GetRow3();
 
-        Row3 = Vector4::Add(Row3, Vector4(translation, 0.0f));
+        Row3 = Vector4::Add(Row3, Vector4(translation, 1.0f));
 		//Row3 += Vector4(translation, 0.0f);
 		Row3.w = 1.0f;
 
@@ -704,6 +704,17 @@
 			Vector4::Dot(vector, this->GetColumn1()),
 			Vector4::Dot(vector, this->GetColumn2())
 		); // Neater to do with Dot Products.
+		return result;
+	}
+
+	Vector3 Matrix4::TransformPosition(Vector3 vector)
+	{
+		Vector3 translation = GetTranslation();
+		Vector3 result(
+			Vector3::Dot(vector, Vector3(this->GetColumn0())) + translation.x,
+			Vector3::Dot(vector, Vector3(this->GetColumn1())) + translation.y,
+			Vector3::Dot(vector, Vector3(this->GetColumn2())) + translation.z
+		); // Neater to do with Dot Products.		
 		return result;
 	}
 
