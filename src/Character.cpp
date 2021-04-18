@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "OpenGlUtils.h"
+#include "Debug.h"
 
 void Character::LoadModel(std::string fileNameModel)
 {
@@ -23,6 +24,27 @@ void Character::Initilise()
 
 	InitShadowMap();
 	InitAOMap();
+
+	// Initilise test dynamic lighting:
+	for (int i = 0; i < numPointLights; i++)
+	{
+		PointLight* light = new PointLight();
+		light->position = Vector3(PointLight::RandomFloat(), PointLight::RandomFloat(), PointLight::RandomFloat()) * 10;
+		light->aabb = AABB(light->position, Vector3::One * 0.1f);
+
+		light->constant = 0.01f;
+		light->linear = 0.001f;
+		light->quadratic = 0.001f;
+		light->ambient = Vector3(0, 0, 0);
+		light->diffuse = Vector3(PointLight::RandomFloat01(), PointLight::RandomFloat01(), PointLight::RandomFloat01());
+		light->specular = Vector3(PointLight::RandomFloat01(), PointLight::RandomFloat01(), PointLight::RandomFloat01());
+		light->intensity = PointLight::RandomFloat01();
+		light->transform = Matrix4::GetIdentity();
+		light->isActive = 1;
+
+		pointLights.push_back(light);
+	}
+
 }
 
 void Character::Render(sf::RenderWindow* window, Transform cameraTransform, Matrix4 projectionMatrix, Matrix4 modelview, Vector3 light_dir, Matrix4 lightModelView)
@@ -41,6 +63,7 @@ void Character::Render(sf::RenderWindow* window, Transform cameraTransform, Matr
 	}
 
 	meshBuffer->Bounds->Debug();
+	Debug::DrawLines_RenderDispatch(window, cameraTransform, projectionMatrix, modelview);
 }
 
 void Character::RenderModel(sf::RenderWindow* window, Transform cameraTransform, Matrix4 projectionMatrix, Matrix4 modelview, Vector3 light_dir, bool outlinePass)
@@ -75,6 +98,7 @@ void Character::RenderModel(sf::RenderWindow* window, Transform cameraTransform,
 	float* arrModelviewMat = modelview.ToArray();
 	float* arrViewMat = cameraTransform.localMatrix.ToArray();
 
+	//float* ldir = cameraTransform.localMatrix.TransformVector(light_dir).ToArray();
 	float* ldir = light_dir.ToArray();
 	float* eyePos = cameraTransform.localMatrix.GetTranslation().ToArray();
 
@@ -106,6 +130,48 @@ void Character::RenderModel(sf::RenderWindow* window, Transform cameraTransform,
 
 	glUniform1i(outlinePassLocation, outlinePass ? 1 : 0);
 
+	int numPointLightsLocation = glGetUniformLocation(program->programID, "numPointLights");
+	glUniform1i(numPointLightsLocation, numPointLights);
+
+	for (int i = 0; i < pointLights.size(); i++)
+	{
+		std::string number = std::to_string(i);
+		std::string elem = "pointLights[" + number + "]";
+
+		PointLight* light = pointLights[i];
+
+		//light->aabb.Center = light->position;
+		
+		float smoothing = 1.1;
+		light->transform.Translate(PointLight::RandomVector() * smoothing);
+		Vector3 pos = light->transform.TransformPosition(light->position);
+		pos = modelview.TransformPosition(pos);
+
+		float* position = pos.ToArray();
+		glUniform3fv(glGetUniformLocation(program->programID, (elem + ".position").c_str()), 1, position);
+		glUniform1f(glGetUniformLocation(program->programID, (elem + ".constant").c_str()), light->constant);
+		glUniform1f(glGetUniformLocation(program->programID, (elem + ".linear").c_str()), light->linear);
+		glUniform1f(glGetUniformLocation(program->programID, (elem + ".quadratic").c_str()), light->quadratic);
+
+		float* ambient = light->ambient.ToArray();
+		float* diffuse = light->diffuse.ToArray();
+		float* specular = light->specular.ToArray();
+
+		glUniform3fv(glGetUniformLocation(program->programID, (elem + ".ambient").c_str()), 1, ambient);
+		glUniform3fv(glGetUniformLocation(program->programID, (elem + ".diffuse").c_str()), 1, diffuse);
+		glUniform3fv(glGetUniformLocation(program->programID, (elem + ".specular").c_str()), 1, specular);
+
+		glUniform1f(glGetUniformLocation(program->programID, (elem + ".intensity").c_str()), light->intensity);
+
+		glUniform1i(glGetUniformLocation(program->programID, (elem + ".isActive").c_str()), light->isActive);
+
+		delete specular;
+		delete diffuse;
+		delete ambient;
+		delete position;
+	}
+	
+
 	meshBuffer->BindTextures();
 
 	if (lutTexture00 != nullptr) lutTexture00->bindToUnit(5);
@@ -129,6 +195,13 @@ void Character::RenderModel(sf::RenderWindow* window, Transform cameraTransform,
 	delete[] ldir;
 	delete[] eyePos;
 	delete[] arrDepthMVP;
+
+	for (int i = 0; i < pointLights.size(); i++)
+	{
+		pointLights[i]->aabb.Debug(ColourRGBA(Vector4(1.0f, pointLights[i]->diffuse.x, pointLights[i]->diffuse.y, pointLights[i]->diffuse.z)));
+		Debug::DrawLines_RenderDispatch(window, cameraTransform, projectionMatrix, pointLights[i]->transform);
+	}
+	
 }
 
 void Character::InitShadowMap()

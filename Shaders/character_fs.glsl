@@ -23,6 +23,7 @@ struct PointLight
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
+	float intensity;
 
 	int isActive; // If the light is active
 };  
@@ -109,6 +110,58 @@ vec3 PBR_Lighting(vec3 FragPosition, vec3 viewDir, vec3 n, Light light, PBRMater
 	//float attenuation = 1.0 / (distance * distance);
 	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
 	vec3 radiance     = light.colour * attenuation;        
+	
+	// cook-torrance brdf
+	float NDF = DistributionGGX(n, H, material.roughness);        
+	float G   = GeometrySmith(n, viewDir, L, material.roughness);      
+	vec3 F    = fresnelSchlick(max(dot(H, viewDir), 0.0), F0);       
+	
+	vec3 kS = F;
+	vec3 kD = vec3(1.0) - kS;
+	kD *= 1.0 - material.metallic;
+	
+	vec3 numerator    = NDF * G * F;
+	float denominator = 4.0 * max(dot(n, viewDir), 0.0) * max(dot(n, L), 0.0);
+	vec3 specular2     = (numerator / max(denominator, 0.001));   
+
+	float specularValue2 = SpecularLighting(material.specular.r, material.gMatSpecularIntensity, material.shininess, light.position, viewDir, n);
+	
+	// add to outgoing radiance Lo light_contribution
+	float surfaceFactor = max(dot(n, L), 0.0);
+	
+	vec3 diffuse = (kD * (material.albedo / PI));
+	vec3 specular = (material.specular * specularValue2) + specular2;
+	
+	vec3 light_contribution = (diffuse + specular) * surfaceFactor * radiance;
+	
+	// light.spotDir = vec3(1,0,0);
+	// vec3 ld = normalize(light.position);
+    // vec3 sd = normalize(vec3(-light.spotDir));  
+	// float spotCutOff = cos(90*PI/180);
+	// bool insideCone = dot(sd,ld) > spotCutOff;
+    // if (!insideCone) // inside the cone?
+	// {
+		// // within cone so perform lighting
+		// light_contribution = vec3(0);
+	// }
+	
+	light_contribution = clamp(light_contribution, 0, 1);
+	
+	return light_contribution;
+}
+
+vec3 PBR_Lighting2(vec3 FragPosition, vec3 viewDir, vec3 n, PointLight light, PBRMaterial material)
+{
+	vec3 F0 = vec3(0.04); 
+	F0 = mix(F0, material.albedo, material.metallic);
+	// reflectance equation
+	// calculate per-light radiance
+	vec3 L = normalize(light.position - FragPosition);
+	vec3 H = normalize(viewDir + L);
+	float distance    = length(light.position - FragPosition);
+	//float attenuation = 1.0 / (distance * distance);
+	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
+	vec3 radiance     = light.diffuse * attenuation * light.intensity;        
 	
 	// cook-torrance brdf
 	float NDF = DistributionGGX(n, H, material.roughness);        
@@ -291,42 +344,122 @@ vec3 ADSE_Lighting(vec3 emissive, float emissiveness,
 	return lighting;
 }
 
-vec3 CalcDirLight(DirLight light, PBRMaterial material, vec3 normal, vec3 viewDir)
+vec3 CalcDirLight(DirLight light, PBRMaterial material, vec3 n, vec3 viewDir)
 {
     vec3 lightDir = normalize(-light.direction);
-    // diffuse shading
-    float diff = max(dot(normal, lightDir), 0.0);
-    // specular shading
-    vec3 reflectDir = reflect(-lightDir, normal);
+
+    float diff = max(dot(n, lightDir), 0.0);
+
+    vec3 reflectDir = reflect(-lightDir, n);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    // combine results
-    vec3 ambient  = light.ambient;//  * vec3(texture(material.diffuse, TexCoords));
-    vec3 diffuse  = light.diffuse  * diff; // * vec3(texture(material.diffuse, TexCoords));
-    vec3 specular = light.specular * spec; // * vec3(texture(material.specular, TexCoords));
+
+    vec3 ambient  = light.ambient;
+    vec3 diffuse  = light.diffuse  * diff;
+    vec3 specular = light.specular * spec;
+
     return (ambient + diffuse + specular) * light.isActive * light.intensity;
 } 
 
-vec3 CalcPointLight(PointLight light, PBRMaterial material, vec3 normal, vec3 fragPos, vec3 viewDir)
+vec3 CalcPointLight(PointLight light, PBRMaterial material, vec3 n, vec3 FragPosition, vec3 viewDir)
 {
-    vec3 lightDir = normalize(light.position - fragPos);
-    // diffuse shading
-    float diff = max(dot(normal, lightDir), 0.0);
-    // specular shading
-    vec3 reflectDir = reflect(-lightDir, normal);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    // attenuation
-    float distance    = length(light.position - fragPos);
-    float attenuation = 1.0 / (light.constant + light.linear * distance + 
-  			     light.quadratic * (distance * distance));    
-    // combine results
-    vec3 ambient  = light.ambient;//  * vec3(texture(material.diffuse, TexCoords));
-    vec3 diffuse  = light.diffuse  * diff;// * vec3(texture(material.diffuse, TexCoords));
-    vec3 specular = light.specular * spec;// * vec3(texture(material.specular, TexCoords));
-    ambient  *= attenuation;
-    diffuse  *= attenuation;
-    specular *= attenuation;
-    return (ambient + diffuse + specular) * light.isActive;
+	// vec3 pos = light.position;
+    // vec3 lightDir = normalize(pos - FragPosition);
+    // // diffuse shading
+    // float diff = max(dot(n, lightDir), 0.0);
+    // // specular shading
+    // vec3 reflectDir = reflect(-lightDir, n);
+    // float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    // // attenuation
+    // float distance    = length(pos - FragPosition);
+
+	// //float attenuation = 1.0 / (distance * distance);    
+    // float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
+    // // combine results
+    // vec3 ambient  = light.ambient;
+    // vec3 diffuse  = light.diffuse  * diff;
+    // vec3 specular = light.specular * spec;
+
+	// // ambient  *= attenuation;
+    // // diffuse  *= attenuation;
+    // // specular *= attenuation;
+
+	// vec3 radiance = (ambient + diffuse + specular) * attenuation * light.intensity;
+
+    // return radiance * light.isActive;
+
+
+
+ 	vec3 pos = light.position;
+	vec3 F0 = vec3(0.04); 
+	F0 = mix(F0, material.albedo, material.metallic);
+	// reflectance equation
+	// calculate per-light radiance
+	vec3 L = normalize(pos - FragPosition);
+	vec3 H = normalize(viewDir + L);
+	float distance    = length(pos - FragPosition);
+	//float attenuation = 1.0 / (distance * distance);
+	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
+	vec3 radiance     = light.diffuse * attenuation * light.intensity;        
+	
+	// cook-torrance brdf
+	float NDF = DistributionGGX(n, H, material.roughness);        
+	float G   = GeometrySmith(n, viewDir, L, material.roughness);      
+	vec3 F    = fresnelSchlick(max(dot(H, viewDir), 0.0), F0);       
+	
+	vec3 kS = F;
+	vec3 kD = vec3(1.0) - kS;
+	kD *= 1.0 - material.metallic;
+	
+	vec3 numerator    = NDF * G * F;
+	float denominator = 4.0 * max(dot(n, viewDir), 0.0) * max(dot(n, L), 0.0);
+	vec3 specular2     = (numerator / max(denominator, 0.001));   
+
+	float specularValue2 = SpecularLighting(material.specular.r, material.gMatSpecularIntensity, material.shininess, light.position, viewDir, n);
+	
+	// add to outgoing radiance Lo light_contribution
+	float surfaceFactor = max(dot(n, L), 0.0);
+	
+	vec3 diffuse = (kD * (material.albedo / PI));
+	vec3 specular = (material.specular * specularValue2) + specular2;
+	
+
+	vec3 light_contribution = (diffuse + specular) * surfaceFactor * radiance;
+	//light_contribution = vec3(1,0,0);
+	
+	// light.spotDir = vec3(1,0,0);
+	// vec3 ld = normalize(light.position);
+    // vec3 sd = normalize(vec3(-light.spotDir));  
+	// float spotCutOff = cos(90*PI/180);
+	// bool insideCone = dot(sd,ld) > spotCutOff;
+    // if (!insideCone) // inside the cone?
+	// {
+		// // within cone so perform lighting
+		// light_contribution = vec3(0);
+	// }
+	
+	light_contribution = clamp(light_contribution, 0, 1);
+	
+	return light_contribution;
 } 
+
+vec3 ApplyLighting(DirLight dirLight, PBRMaterial material, vec3 n, vec3 FragPosition, vec3 viewDir)
+{
+	vec3 light_contribution = vec3(0);
+
+	// For each light append contribution
+
+	// Directional lights.
+	//light_contribution += CalcDirLight(dirLight, material, n, viewDir);
+	
+	// Point lights.
+	for(int i = 0; i < numPointLights; i++)
+    {
+		//light_contribution += CalcPointLight(pointLights[i], material, n, FragPosition, viewDir); 
+		light_contribution += PBR_Lighting2(FragPosition, viewDir, n, pointLights[i], material);
+	}
+
+	return light_contribution;
+}
 
 void main() 
 {
@@ -347,7 +480,7 @@ void main()
 	//vec3 lightDir = normalize(lightDirection - FragPosition);
 	//vec3 lightDir = lightDirection;
 	
-	float diff = max(0.f, dot(n, lightDir));
+	float diff = max(0.0f, dot(n, lightDir));
 	float spec = texture(specularTexture, uv).x;
 	
 	 
@@ -418,20 +551,18 @@ void main()
 	light.linear = 0.001;
 	light.quadratic = 0.001;
 	light.colour = vec3(1,1,1);
-	light.position = lightDirection * 1;
+	light.position = lightDirection;
 	
 	dirLight.direction = vec3(0,-1,0);
 	dirLight.ambient = vec3(0,0,0);
 	dirLight.diffuse = vec3(1,1,1);
 	dirLight.specular = vec3(1,1,1);
-	dirLight.intensity = 0.4;
+	dirLight.intensity = 0.1;
 	dirLight.isActive = 1;
 
 	// For each light append contribution
-	light_contribution += PBR_Lighting(FragPosition, viewDir, n, light, material);
+	//light_contribution += PBR_Lighting(FragPosition, viewDir, n, light, material);
 	
-	// vec3 L = normalize(light.position - FragPosition);
-
     vec3 ambient2 = vec3(0.03) * material.albedo * material.ao;
 
 	//vec3 luminanceThreshold2 = vec3(0.2126, 0.7152, 0.0722); // luma coefficients
@@ -440,12 +571,9 @@ void main()
 	//light_contribution =  light_contribution * CelShading(brightness2);
 
     vec3 colour = ambient2 + (emissive * emissiveness) + (light_contribution);
-	
-    //color = color / (color + vec3(1.0)); // normalise to LDR
-    //color = pow(color, vec3(1.0/2.2));   // gamma correct
    
-    //color  = color * visibility;
-	//color = fresnelSchlick(diff, F0);
+    //colour  = colour * visibility;
+	//colour = fresnelSchlick(diff, F0);
 
 	vec3 outlineColour = vec3(1,1,1);
 	vec3 S0 = step(vec3(diff), vec3(0));
@@ -457,14 +585,12 @@ void main()
 	//colour = colour + (outliner * outlineColour * outlinePass);
 	
 	// Final lighting calculations:
-	// Directional lights.
-	colour += CalcDirLight(dirLight, material, n, viewDir);
-	// Point lights.
-	for(int i = 0; i < numPointLights; i++)
-    {
-		colour += CalcPointLight(pointLights[i], material, n, FragPos, viewDir); 
-	}
 	
+	colour += ApplyLighting(dirLight, material, n, FragPos, viewDir);
+	
+    //colour = colour / (colour + vec3(1.0)); // normalise to LDR
+    //colour = pow(colour, vec3(1.0/2.2));   // gamma correct
+
 	frag_colour = vec4(colour, 1.0);
 	//frag_colour = vec4(1.0, 0, 0, 1.0);
 	// check whether fragment output is higher than threshold, if so output as brightness color

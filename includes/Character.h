@@ -16,6 +16,53 @@
 #include "ShaderHelpers.h"
 #include "TGADecoder.h"
 #include "MeshBufferVAO.h"
+#include "Random.h"
+
+class PointLight
+{
+private: 
+	inline static Random* random = nullptr;
+public:
+	Vector3 position;
+
+	float constant;
+	float linear;
+	float quadratic;
+
+	Vector3 ambient;
+	Vector3 diffuse;
+	Vector3 specular;
+	float intensity;
+
+	int isActive; // If the light is active
+
+	AABB aabb;
+	Matrix4 transform;
+
+	inline static float RandomFloat()
+	{
+		if (random == nullptr)random = new Random();
+
+		return random->RandomFloat(0, 1) - 0.5f;
+	}
+
+	inline static float RandomFloat01()
+	{
+		if (random == nullptr)random = new Random();
+
+		return random->RandomFloat(0, 1);
+	}
+
+	inline static Vector3 RandomVector()
+	{
+		return  Vector3(RandomFloat(), RandomFloat(), RandomFloat());
+	}
+
+	inline static Vector3 RandomVector01()
+	{
+		return  Vector3(RandomFloat01(), RandomFloat01(), RandomFloat01());
+	}
+};
 
 class Character
 {
@@ -23,6 +70,9 @@ private:
 	ShaderProgram* program = nullptr;
 	ShaderProgram* programShadowmap = nullptr;
 	GLuint FramebufferName = 0;
+
+	int numPointLights = 80;
+	std::vector<PointLight*> pointLights;
 
 public:
 	MeshBufferVAO* meshBuffer = nullptr;
@@ -43,7 +93,7 @@ public:
 	}
 	~Character()
 	{
-
+		delete meshBuffer;
 	}
 
 	void LoadModel(std::string fileNameModel);
