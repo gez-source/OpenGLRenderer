@@ -169,9 +169,9 @@ void VirtualWorld::Render(sf::RenderWindow* window, Transform cameraTransform, M
 	//octreeRenderer->Render(window, cameraTransform, projectionMatrix, modelview, light_dir, lightModelView);
 	//octreeRenderer->RenderAABB();
 
-	for (int x = 0; x < 100; x++)
+	for (int x = 0; x < 10; x++)
 	{
-		for (int y = 0; y < 100; y++)
+		for (int y = 0; y < 10; y++)
 		{
 			float cx = worldPosition.x / 16;
 			float cy = worldPosition.z / 16;
