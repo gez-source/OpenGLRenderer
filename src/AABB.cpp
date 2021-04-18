@@ -164,9 +164,9 @@ bool AABB::Intersects(AABB* other)
 /// <summary>
 /// Draws lines for each plane of the bounding box.
 /// </summary>
-void AABB::Debug()
+void AABB::Debug(ColourRGBA boundsColour)
 {
-	ColourRGBA boundsColour = ColourRGBA(1.0f, 1.0f, 0.0f, 0.0f);
+	
 	//ColourRGBA centerColour;
 
 	// Debug the center point.

@@ -87,7 +87,7 @@ public:
 	/// <summary>
 	/// Draws lines for each plane of the bounding box.
 	/// </summary>
-	void Debug();
+	void Debug(ColourRGBA boundsColour = ColourRGBA(1.0f, 1.0f, 0.0f, 0.0f));
 };
 
 #endif
