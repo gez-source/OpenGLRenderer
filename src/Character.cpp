@@ -199,7 +199,7 @@ void Character::RenderModel(sf::RenderWindow* window, Transform cameraTransform,
 	for (int i = 0; i < pointLights.size(); i++)
 	{
 		pointLights[i]->aabb.Debug(ColourRGBA(Vector4(1.0f, pointLights[i]->diffuse.x, pointLights[i]->diffuse.y, pointLights[i]->diffuse.z)));
-		Debug::DrawLines_RenderDispatch(window, cameraTransform, projectionMatrix, pointLights[i]->transform);
+		Debug::DrawLines_RenderDispatch(window, cameraTransform, projectionMatrix, modelview * pointLights[i]->transform);
 	}
 	
 }
