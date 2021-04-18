@@ -192,6 +192,7 @@
     <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\Ray.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\Rigidbody.cpp" />
     <ClCompile Include="src\ShaderHelpers.cpp" />
     <ClCompile Include="src\ShaderProgram.cpp" />
     <ClCompile Include="src\SkeletonData.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="includes\NoiseHelpers.h" />
     <ClInclude Include="includes\OctreeRenderer.h" />
     <ClInclude Include="includes\Random.h" />
+    <ClInclude Include="includes\Rigidbody.h" />
     <ClInclude Include="includes\Skybox.h" />
     <ClInclude Include="includes\Terrain.h" />
     <ClInclude Include="includes\TimeManager.h" />

@@ -91,6 +91,12 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{665d41c4-8dee-4b58-ae02-d0a1deb951d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{469a7401-e850-4c1e-91df-b1e5fb4e5e7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{f8a75cb2-865a-4cfb-8bf4-d68be520021b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\IOHelpers.cpp">
@@ -347,6 +353,9 @@
     </ClCompile>
     <ClCompile Include="src\VirtualWorld.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rigidbody.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -667,6 +676,9 @@
     </ClInclude>
     <ClInclude Include="includes\VirtualWorld.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Rigidbody.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
