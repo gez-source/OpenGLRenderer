@@ -8,8 +8,8 @@
 //{
 
 	const float PI = 3.14159274F;
-	const float Deg2Rad = 0.0174532924F;
-	const float Rad2Deg = 57.29578F;
+	const float Deg2Rad = 0.0174532924F; // (PI * 2) / 360
+	const float Rad2Deg = 57.29578F; 
 	const float TwoPi = 2 * PI;
 	const float PI2 = 2 * PI;
 	const float PI3OverTwo = ((3.0f * PI) / 2.0f); // 270 degrees
