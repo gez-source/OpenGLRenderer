@@ -16,7 +16,14 @@ MeshBufferVAO::~MeshBufferVAO()
 		delete Bounds;
 	}
 
-	//TODO: free VAO and mesh 
+	// Free VAO and mesh buffers from memory.
+	glDeleteBuffers(1, &points_vbo);
+	glDeleteBuffers(1, &texcoords_vbo);
+	glDeleteBuffers(1, &normals_vbo);
+	glDeleteBuffers(1, &tangents_vbo);
+	glDeleteBuffers(1, &bitangents_vbo);
+
+	glDeleteVertexArrays(1, &vao);
 }
 
 void AppendModelBuffersTriangle(AABB* Bounds,
@@ -279,27 +286,22 @@ void MeshBufferVAO::LoadModel(std::string fileNameModel)
 	
 	if (verticies.size() == 0) throw "Verticies could not be found.";
 
-	GLuint points_vbo;
 	glGenBuffers(1, &points_vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, points_vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * verticies.size(), verticies.data(), GL_STATIC_DRAW);
 
-	GLuint texcoords_vbo;
 	glGenBuffers(1, &texcoords_vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, texcoords_vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * texCoords.size(), texCoords.data(), GL_STATIC_DRAW);
 
-	GLuint normals_vbo;
 	glGenBuffers(1, &normals_vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, normals_vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * normals.size(), &normals[0], GL_STATIC_DRAW);
 
-	GLuint tangents_vbo;
 	glGenBuffers(1, &tangents_vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, tangents_vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * tangents.size(), &tangents[0], GL_STATIC_DRAW);
 
-	GLuint bitangents_vbo;
 	glGenBuffers(1, &bitangents_vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, bitangents_vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * bitangents.size(), &bitangents[0], GL_STATIC_DRAW);

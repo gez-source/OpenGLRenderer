@@ -17,7 +17,13 @@ private:
 	Model* model = nullptr;
 	bool quads = false;
 	int verticiesCount = 0;
+
 	GLuint vao = 0;
+	GLuint points_vbo;
+	GLuint texcoords_vbo;
+	GLuint normals_vbo;
+	GLuint tangents_vbo;
+	GLuint bitangents_vbo;
 
 	GLuint texture = 0;
 	GLuint textureNormalMap = 0;
