@@ -76,13 +76,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\XPath3\includes;$(SolutionDir)includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\fltk-1.3.5-source\includes;$(SolutionDir)external\XPath3\includes;$(SolutionDir)includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)external\XPath3\Debug;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\lib-vc2015;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>XPath3.lib;glew32s.lib;glfw3.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;sfml-graphics-s-d.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s-d.lib;ws2_32.lib;sfml-network-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\XPath3\Debug;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\lib-vc2015;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;$(SolutionDir)external\fltk-1.3.5-source\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fltkd.lib;XPath3.lib;glew32s.lib;glfw3.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;sfml-graphics-s-d.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s-d.lib;ws2_32.lib;sfml-network-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -108,7 +108,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\XPath3\includes;$(SolutionDir)includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\fltk-1.3.5-source\includes;$(SolutionDir)external\XPath3\includes;$(SolutionDir)includes;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
@@ -116,8 +116,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)external\XPath3\Release;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\lib-vc2015;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32</AdditionalLibraryDirectories>
-      <AdditionalDependencies>XPath3.lib;glew32s.lib;glfw3.lib;sfml-window-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;sfml-graphics-s.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s.lib;ws2_32.lib;sfml-network-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\XPath3\Release;$(SolutionDir)external\glfw-3.2.1.bin.WIN32\lib-vc2015;$(SolutionDir)external\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;$(SolutionDir)external\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;$(SolutionDir)external\fltk-1.3.5-source\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fltk.lib;XPath3.lib;glew32s.lib;glfw3.lib;sfml-window-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;sfml-graphics-s.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s.lib;ws2_32.lib;sfml-network-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -158,6 +158,7 @@
     <ClCompile Include="src\CoorinateSet.cpp" />
     <ClCompile Include="src\Cubemap.cpp" />
     <ClCompile Include="src\Debug.cpp" />
+    <ClCompile Include="src\Editor.cpp" />
     <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\FileWatcher.cpp" />
     <ClCompile Include="src\HalfEdgeMesh.cpp" />
@@ -246,6 +247,7 @@
     <ClInclude Include="includes\CoorinateSet.h" />
     <ClInclude Include="includes\Cubemap.h" />
     <ClInclude Include="includes\Debug.h" />
+    <ClInclude Include="includes\Editor.h" />
     <ClInclude Include="includes\FileWatcher.h" />
     <ClInclude Include="includes\Light.h" />
     <ClInclude Include="includes\MeshBufferVAO.h" />

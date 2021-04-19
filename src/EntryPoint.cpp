@@ -2,9 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 #include "CharacterController.h"
+#include "Editor.h"
 
+#include <thread>
 
-int main()
+void init_renderer()
 {
 	Renderer renderer;
 	sf::RenderWindow window;
@@ -88,8 +90,21 @@ int main()
 		// end the current frame (internally swaps the front and back buffers)
 		window.display();
 	}
+}
 
-	// release resources...
+int main()
+{
+	// Load the game in a separate thread.
+	std::thread thread(init_renderer);
 
+	// Load the level editor in the main thread.
+	Editor* editor = new Editor(); 
+
+	// Terminate all game threads.
+	std::terminate();
+
+	// Release resources...
+	delete editor;
+	
 	return 0;
 }
