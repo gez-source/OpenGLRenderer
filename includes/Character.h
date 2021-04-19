@@ -71,7 +71,7 @@ private:
 	ShaderProgram* programShadowmap = nullptr;
 	GLuint FramebufferName = 0;
 
-	int numPointLights = 80;
+	int numPointLights = 40;
 	std::vector<PointLight*> pointLights;
 
 public:
