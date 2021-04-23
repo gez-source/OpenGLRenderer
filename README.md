@@ -9,5 +9,6 @@ This is an incomplete proof of concept of an OpenGL shader software renderer.
 
 To use:
 
-1. Unpack vc_lib.zip in external\wxWidgets-3.1.5 to wxWidgets-3.1.5/vc_lib. This is wxWidgets 3.1.5 statically compiled and is only needed to build the level editor.
+1. Run UnpackProjectFiles.bat. What this does is unpack vc_lib.zip in external\wxWidgets-3.1.5 to wxWidgets-3.1.5/vc_lib. This is wxWidgets 3.1.5 statically compiled and is only needed to build the level editor.
+
 2. Open OpenGLRenderer.sln in Visual Studio 2019 and Compile in Debug or Release for x86 (32 bit only build at this stage).
