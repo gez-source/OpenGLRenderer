@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Math">
-      <UniqueIdentifier>{572d745e-eaa4-44fb-a12b-b7f52ef9d328}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Math">
       <UniqueIdentifier>{b15151f4-6e5f-49b5-aa3b-a04ecf4fe7ec}</UniqueIdentifier>
     </Filter>
@@ -73,9 +70,6 @@
     <Filter Include="Source Files\XML">
       <UniqueIdentifier>{2110e349-21f5-49c6-befc-6f4f7aef64b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\OpenGL">
-      <UniqueIdentifier>{31271edf-c73e-4330-af2b-4f9d80872677}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\OpenGL">
       <UniqueIdentifier>{89520834-b497-4dca-96ff-0447f3c1a846}</UniqueIdentifier>
     </Filter>
@@ -84,9 +78,6 @@
     </Filter>
     <Filter Include="Source Files\Terrain">
       <UniqueIdentifier>{d24115b8-cb65-4325-bc18-ac39eea03b34}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Game">
-      <UniqueIdentifier>{1b6c951f-eaa9-49d5-8df6-54b6a59b4a58}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{665d41c4-8dee-4b58-ae02-d0a1deb951d2}</UniqueIdentifier>
@@ -102,6 +93,15 @@
     </Filter>
     <Filter Include="Source Files\LevelEditor">
       <UniqueIdentifier>{57524c5e-643f-48e5-9c6e-1780c98ab114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{1b6c951f-eaa9-49d5-8df6-54b6a59b4a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{572d745e-eaa4-44fb-a12b-b7f52ef9d328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Math\OpenGL">
+      <UniqueIdentifier>{31271edf-c73e-4330-af2b-4f9d80872677}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -366,6 +366,9 @@
     <ClCompile Include="src\Editor.cpp">
       <Filter>Source Files\LevelEditor</Filter>
     </ClCompile>
+    <ClCompile Include="src\SFMLCanvas.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\IOHelpers.h">
@@ -579,28 +582,28 @@
       <Filter>Header Files\Animation\ColladaParser\DataStructures</Filter>
     </ClInclude>
     <ClInclude Include="includes\Vao.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Vbo.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Texture.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\TextureBuilder.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\TextureData.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\TextureUtils.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\OpenGLExt.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\TGADecoder.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Transform.h">
       <Filter>Header Files\Math</Filter>
@@ -618,37 +621,37 @@
       <Filter>Header Files\XML</Filter>
     </ClInclude>
     <ClInclude Include="includes\OpenGlUtils.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\ShaderProgram.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\UniformMatrix.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Uniform.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\UniformSampler.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\UniformVec3.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\UniformMat4Array.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\TimeManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="includes\Cubemap.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Skybox.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\UniformInt.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Terrain.h">
       <Filter>Header Files\Terrain</Filter>
@@ -657,10 +660,10 @@
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="includes\UniformVec3Array.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Light.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\FileWatcher.h">
       <Filter>Header Files</Filter>
@@ -675,10 +678,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="includes\MeshBufferVAO.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Debug.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Math\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="includes\Random.h">
       <Filter>Header Files\Math</Filter>
@@ -690,6 +693,12 @@
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="includes\Editor.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\EntryPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\SFMLCanvas.h">
       <Filter>Header Files\LevelEditor</Filter>
     </ClInclude>
   </ItemGroup>

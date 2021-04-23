@@ -1,6 +1,7 @@
 #include "IOHelpers.h"
 #include <string>
 #include <cstdio>
+#include <filesystem>
 
 /// Copy a shader from a plain text file into a character array.
 bool ReadShaderSource(const std::string file_name, std::string& shader_str)
@@ -32,4 +33,28 @@ bool ReadShaderSource(const std::string file_name, std::string& shader_str)
 	fclose(file);
 
 	return true;
+}
+
+int GetDirectoryFiles(std::string path, std::vector<std::string>& files)
+{
+	for (const auto& file : std::filesystem::directory_iterator(path))
+	{
+		files.push_back(std::string(file.path().u8string()));
+	}
+
+	return files.size();
+}
+
+std::string GetFileExtension(std::string filename)
+{
+	return std::string(std::filesystem::path(filename).extension().u8string());
+}
+
+std::string ToLowerCaseCopy(const std::string input)
+{
+	std::string copy = std::string(input);
+	std::for_each(copy.begin(), copy.end(), [](char& c) {
+		c = ::tolower(c);
+	});
+	return copy;
 }
